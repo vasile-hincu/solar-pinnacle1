@@ -70,14 +70,14 @@ const Contact = () => {
       icon: Phone,
       label: "Telefon",
       value: "078 901 362",
-      href: "tel:+378901362",
+      href: "tel:+37378901362",
       description: "Luni - Vineri, 8:00 - 18:00",
     },
     {
       icon: MessageCircle,
       label: "WhatsApp",
       value: "078 901 362",
-      href: "https://wa.me/378901362",
+      href: "https://wa.me/37378901362",
       description: "Răspundem rapid",
     },
     {

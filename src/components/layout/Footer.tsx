@@ -101,7 +101,7 @@ export const Footer = () => {
                 <div>
                   <p className="text-sm text-muted-foreground">Telefon</p>
                   <a
-                    href="tel:+378901362"
+                    href="tel:+37378901362"
                     className="text-foreground hover:text-primary transition-colors"
                   >
                     078 901 362
