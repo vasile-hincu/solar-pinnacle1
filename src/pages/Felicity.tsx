@@ -30,7 +30,6 @@ const Felicity = () => {
       name: "Felicity ESS 5.5",
       idealFor: "Case mici, apartamente",
       voltage: "51.2V",
-      cycles: "6000+",
       warranty: "10 ani",
       features: ["LiFePO4", "BMS integrat", "Montaj perete", "LCD display"],
       image: battery5kwImage,
@@ -41,7 +40,6 @@ const Felicity = () => {
       name: "Felicity ESS 10.5",
       idealFor: "Case medii, birouri mici",
       voltage: "51.2V",
-      cycles: "6000+",
       warranty: "10 ani",
       features: ["LiFePO4", "BMS avansat", "Scalabil", "Smart monitoring"],
       popular: true,
@@ -53,7 +51,6 @@ const Felicity = () => {
       name: "Felicity ESS 16",
       idealFor: "Case mari, vile",
       voltage: "51.2V",
-      cycles: "6000+",
       warranty: "10 ani",
       features: ["LiFePO4", "High power output", "Paralelizabil", "App control"],
       image: battery16kwImage,
@@ -64,7 +61,6 @@ const Felicity = () => {
       name: "Felicity ESS 23.5",
       idealFor: "Rezidențial premium, comercial",
       voltage: "51.2V",
-      cycles: "6000+",
       warranty: "10 ani",
       features: ["LiFePO4", "Max capacity", "Enterprise ready", "Remote management"],
       image: battery23kwImage,
@@ -94,8 +90,8 @@ const Felicity = () => {
     },
     {
       icon: RefreshCcw,
-      title: "6000+ Cicluri",
-      description: "Durată de viață excepțională. Un ciclu/zi = 16+ ani de utilizare.",
+      title: "Scalabilitate modulară",
+      description: "Capacitatea poate fi extinsă pe viitor, în funcție de necesități.",
     },
     {
       icon: Shield,
@@ -203,7 +199,7 @@ const Felicity = () => {
                     <Zap className="w-6 h-6 text-energy" />
                   </div>
                   <div>
-                    <p className="font-bold text-lg">6000+ cicluri</p>
+                    <p className="font-bold text-lg">Eficiență 95%+</p>
                     <p className="text-sm text-muted-foreground">Garanție 10 ani</p>
                   </div>
                 </div>
@@ -306,8 +302,8 @@ const Felicity = () => {
                     <span className="font-medium text-foreground">{battery.voltage}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Cicluri</span>
-                    <span className="font-medium text-foreground">{battery.cycles}</span>
+                    <span className="text-muted-foreground">Tehnologie</span>
+                    <span className="font-medium text-foreground">LiFePO4</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Garanție</span>
