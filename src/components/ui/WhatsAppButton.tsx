@@ -8,32 +8,20 @@ export const WhatsAppButton = () => {
 
   const whatsappUrl = useMemo(() => "https://wa.me/37378901362", []);
   const callUrl = useMemo(() => "tel:+37378901362", []);
-  const nudgeStorageKey = useMemo(() => "wa_nudge_dismissed_v1", []);
 
   const [showNudge, setShowNudge] = useState(false);
 
   useEffect(() => {
     setShowNudge(false);
 
-    try {
-      if (sessionStorage.getItem(nudgeStorageKey) === "1") return;
-    } catch {
-      // ignore storage errors
-    }
-
     const timeoutId = window.setTimeout(() => {
       setShowNudge(true);
-    }, 30_000);
+    }, 20_000);
 
     return () => window.clearTimeout(timeoutId);
-  }, [location.pathname, nudgeStorageKey]);
+  }, [location.pathname]);
 
   const dismissNudge = () => {
-    try {
-      sessionStorage.setItem(nudgeStorageKey, "1");
-    } catch {
-      // ignore storage errors
-    }
     setShowNudge(false);
   };
 
