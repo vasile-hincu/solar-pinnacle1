@@ -30,19 +30,24 @@ export const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/xcbotnari/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Facebook className="w-4 h-4" />
               </a>
               <a
                 href="#"
+                aria-label="Instagram"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a
                 href="#"
+                aria-label="LinkedIn"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Linkedin className="w-4 h-4" />
