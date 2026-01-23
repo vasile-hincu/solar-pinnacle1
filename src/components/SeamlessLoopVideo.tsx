@@ -28,6 +28,7 @@ export function SeamlessLoopVideo({
 
   const [active, setActive] = useState<"a" | "b">("a");
   const [videoFailed, setVideoFailed] = useState(false);
+  const [needsUserGesture, setNeedsUserGesture] = useState(false);
 
   const fadeSeconds = useMemo(() => Math.max(0.6, fadeMs / 1000), [fadeMs]);
 
@@ -42,8 +43,25 @@ export function SeamlessLoopVideo({
     const safePlay = async (video: HTMLVideoElement) => {
       try {
         await video.play();
-      } catch {
-        // Autoplay can be blocked in some environments.
+        setNeedsUserGesture(false);
+        return true;
+      } catch (error) {
+        const err = error as { name?: string; message?: string };
+
+        // Autoplay blocked until user interaction.
+        if (err?.name === "NotAllowedError") {
+          setNeedsUserGesture(true);
+          return false;
+        }
+
+        // Unsupported source/codec can reject play().
+        if (err?.name === "NotSupportedError") {
+          setVideoFailed(true);
+          onVideoError?.();
+          return false;
+        }
+
+        return false;
       }
     };
 
@@ -124,6 +142,8 @@ export function SeamlessLoopVideo({
     muted: true,
     playsInline: true,
     autoPlay: true,
+    controls: false,
+    disablePictureInPicture: true,
     preload: "auto" as const,
     onError: () => {
       setVideoFailed(true);
@@ -160,6 +180,20 @@ export function SeamlessLoopVideo({
         {webmSrc ? <source src={webmSrc} type="video/webm" /> : null}
         <source src={mp4Src} type="video/mp4" />
       </video>
+
+      {needsUserGesture ? (
+        <button
+          type="button"
+          onClick={() => {
+            void videoARef.current?.play();
+            void videoBRef.current?.play();
+            setNeedsUserGesture(false);
+          }}
+          className="absolute bottom-4 right-4 z-20 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur hover:bg-background/90"
+        >
+          Pornește video
+        </button>
+      ) : null}
     </div>
   );
 }
