@@ -31,6 +31,7 @@ export function SeamlessLoopVideo({
   const [active, setActive] = useState<"a" | "b">("a");
   const [videoFailed, setVideoFailed] = useState(false);
   const [needsUserGesture, setNeedsUserGesture] = useState(false);
+  const [showPlayControl, setShowPlayControl] = useState(false);
 
   const fadeSeconds = useMemo(() => Math.max(0.6, fadeMs / 1000), [fadeMs]);
 
@@ -74,6 +75,26 @@ export function SeamlessLoopVideo({
       inactiveVideo.playsInline = true;
 
       await safePlay(activeVideo);
+
+      // Some browsers won't throw on autoplay failure; they just keep the video paused.
+      // If after a short delay it's still not playing, show a manual play control.
+      const checkTimer = window.setTimeout(() => {
+        const v = active === "a" ? videoARef.current : videoBRef.current;
+        if (!v) return;
+        if (v.paused || v.readyState < 2) setShowPlayControl(true);
+      }, 1200);
+
+      const onPlaying = () => {
+        setShowPlayControl(false);
+        setNeedsUserGesture(false);
+      };
+
+      const onPause = () => {
+        setShowPlayControl(true);
+      };
+
+      activeVideo.addEventListener("playing", onPlaying);
+      activeVideo.addEventListener("pause", onPause);
 
       const tick = () => {
         const v = active === "a" ? videoARef.current : videoBRef.current;
@@ -120,12 +141,22 @@ export function SeamlessLoopVideo({
       };
 
       rafIdRef.current = window.requestAnimationFrame(tick);
+
+      return () => {
+        window.clearTimeout(checkTimer);
+        activeVideo.removeEventListener("playing", onPlaying);
+        activeVideo.removeEventListener("pause", onPause);
+      };
     };
 
-    void start();
+    let cleanup: (() => void) | undefined;
+    void (async () => {
+      cleanup = await start();
+    })();
 
     return () => {
       if (rafIdRef.current) window.cancelAnimationFrame(rafIdRef.current);
+      cleanup?.();
     };
   }, [active, fadeMs, fadeSeconds, videoFailed]);
 
@@ -139,6 +170,10 @@ export function SeamlessLoopVideo({
           className={fallbackImgClassName}
         />
         {overlayClassName ? <div className={overlayClassName} /> : null}
+
+        <div className="absolute bottom-4 right-4 z-20 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur">
+          Video indisponibil
+        </div>
       </div>
     ) : null;
   }
@@ -195,6 +230,19 @@ export function SeamlessLoopVideo({
             void videoARef.current?.play();
             void videoBRef.current?.play();
             setNeedsUserGesture(false);
+            setShowPlayControl(false);
+          }}
+          className="absolute bottom-4 right-4 z-20 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur hover:bg-background/90"
+        >
+          Pornește video
+        </button>
+      ) : showPlayControl ? (
+        <button
+          type="button"
+          onClick={() => {
+            const v = active === "a" ? videoARef.current : videoBRef.current;
+            void v?.play();
+            setShowPlayControl(false);
           }}
           className="absolute bottom-4 right-4 z-20 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur hover:bg-background/90"
         >
