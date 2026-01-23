@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" fill="none" role="img" aria-label="X&C Botnari logo placeholder">
+  <rect width="256" height="192" rx="24" fill="#ffffff"/>
+  <path d="M182 58c0 25.4-20.6 46-46 46s-46-20.6-46-46 20.6-46 46-46 46 20.6 46 46Z" fill="#FDBA12"/>
+  <path d="M46 112l78-44 86 44-86 52-78-52Z" fill="#0F172A" opacity="0.95"/>
+  <path d="M64 112l60-34 68 34-68 41-60-41Z" fill="#111827" opacity="0.9"/>
+  <text x="128" y="184" text-anchor="middle" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12" fill="#0F172A" opacity="0.7">Drop your logo as public/logo.png</text>
+</svg>

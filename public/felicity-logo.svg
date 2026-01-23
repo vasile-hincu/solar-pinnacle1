@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" fill="none" role="img" aria-label="FelicitySolar logo placeholder">
+  <rect width="640" height="200" rx="28" fill="#000000"/>
+  <circle cx="96" cy="100" r="56" fill="#F97316"/>
+  <path d="M76 130V70h34c18 0 28 9 28 24 0 14-10 23-28 23H96v13H76Zm20-31h14c9 0 14-4 14-11 0-8-5-12-14-12H96v23Z" fill="#000000"/>
+  <text x="170" y="120" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="64" font-weight="700" fill="#F97316">Felicity</text>
+  <text x="430" y="120" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="64" font-weight="600" fill="#6B7280">solar</text>
+</svg>

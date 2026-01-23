@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logoXcBotnari from "@/assets/logo-xc-botnari.png";
 
 const navLinks = [
   { name: "Acasă", href: "/" },
@@ -43,16 +42,19 @@ export const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img 
-              src={logoXcBotnari} 
-              alt="X&C Botnari - Conectăm Soarele la Casa Ta" 
+              src="/logo.png"
+              alt="X&C Botnari - Conectăm Soarele la Casa ta!"
               className="h-12 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.src = "/logo.svg";
+              }}
             />
             <div className="flex flex-col">
               <span className="font-display font-bold text-lg leading-tight">
                 X&C Botnari
               </span>
-              <span className="text-[10px] text-muted-foreground uppercase tracking-widest">
-                Solar Energy
+              <span className="text-[10px] text-muted-foreground tracking-wide">
+                Conectăm Soarele la Casa ta!
               </span>
             </div>
           </Link>

@@ -136,10 +136,29 @@ const Felicity = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent border border-accent/20 mb-6"
+                className="mb-6 inline-flex items-center gap-4 rounded-2xl border border-border/60 bg-background/75 px-5 py-4 shadow-xl backdrop-blur border-l-4 border-l-[#F97316]"
               >
-                <Award className="w-4 h-4" />
-                <span className="font-medium text-sm">Importator Oficial & Exclusiv în Moldova</span>
+                <div className="shrink-0 rounded-xl bg-white p-2 shadow-sm ring-1 ring-black/10">
+                  <img
+                    src="/felicity-logo.png"
+                    onError={(e) => {
+                      e.currentTarget.src = "/felicity-logo.svg";
+                    }}
+                    alt="FelicitySolar"
+                    className="h-12 w-auto object-contain md:h-14 [filter:drop-shadow(0_10px_24px_rgba(0,0,0,0.20))]"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="flex min-w-0 flex-col">
+                  <div className="flex items-center gap-2">
+                    <Award className="h-4 w-4 text-[#F97316]" />
+                    <span className="text-sm font-semibold text-foreground">Unicii importatori Felicity în Moldova</span>
+                  </div>
+                  <span className="mt-1 text-xs text-muted-foreground">
+                    X&amp;C Botnari SRL • import oficial • suport &amp; garanție
+                  </span>
+                </div>
               </motion.div>
 
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">

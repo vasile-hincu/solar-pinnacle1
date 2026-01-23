@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
-import logoXcBotnari from "@/assets/logo-xc-botnari.png";
 
 export const Footer = () => {
   return (
@@ -11,16 +10,19 @@ export const Footer = () => {
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3">
               <img 
-                src={logoXcBotnari} 
-                alt="X&C Botnari - Conectăm Soarele la Casa Ta" 
+                src="/logo.png"
+                alt="X&C Botnari - Conectăm Soarele la Casa ta!"
                 className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.src = "/logo.svg";
+                }}
               />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg leading-tight">
                   X&C Botnari
                 </span>
-                <span className="text-[10px] text-muted-foreground uppercase tracking-widest">
-                  Solar Energy
+                <span className="text-[10px] text-muted-foreground tracking-wide">
+                  Conectăm Soarele la Casa ta!
                 </span>
               </div>
             </Link>

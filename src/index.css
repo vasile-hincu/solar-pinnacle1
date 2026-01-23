@@ -289,6 +289,22 @@
     @apply relative overflow-hidden;
   }
 
+  /* Drone-like drift for hero video */
+  .hero-media-drift {
+    will-change: transform;
+    transform: translate3d(0, 0, 0) scale(1.08);
+    animation: hero-drift 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-drift {
+    from {
+      transform: translate3d(0%, 0%, 0) scale(1.08);
+    }
+    to {
+      transform: translate3d(-2%, -1%, 0) scale(1.14);
+    }
+  }
+
   .hero-bg::before {
     content: '';
     @apply absolute inset-0;

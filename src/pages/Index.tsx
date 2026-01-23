@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import heroImage from "@/assets/hero-solar.jpg";
 import pvSystemImage from "@/assets/installation-work.jpg";
+import { SeamlessLoopVideo } from "@/components/SeamlessLoopVideo";
 
 const Index = () => {
   const heroRef = useRef(null);
@@ -88,11 +89,14 @@ const Index = () => {
           style={{ y: heroY, scale: heroScale }}
           className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background z-10" />
-          <img
-            src={heroImage}
-            alt="Solar panels at sunset"
-            className="w-full h-full object-cover opacity-40"
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/35 to-background/75 z-10" />
+          <SeamlessLoopVideo
+            mp4Src="/hero-drone.mp4"
+            webmSrc="/hero-drone.webm"
+            posterSrc={heroImage}
+            className="absolute inset-0"
+            mediaClassName="absolute inset-0 h-full w-full object-cover opacity-70 hero-media-drift"
+            fallbackImgClassName="h-full w-full object-cover opacity-55 hero-media-drift"
           />
         </motion.div>
 
@@ -290,8 +294,8 @@ const Index = () => {
                 De ce noi?
               </span>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Nu instalăm panouri.{" "}
-                <span className="text-gradient-primary">Construim sisteme energetice inteligente.</span>
+                Nu instalăm doar panouri.{" "}
+                <span className="text-gradient-primary">Proiectăm și implementăm soluții complete.</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Cu peste 8 ani de experiență și sute de proiecte finalizate, 
