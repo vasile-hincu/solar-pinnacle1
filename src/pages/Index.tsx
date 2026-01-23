@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import heroImage from "@/assets/hero-solar.jpg";
 import pvSystemImage from "@/assets/installation-work.jpg";
-import { SeamlessLoopVideo } from "@/components/SeamlessLoopVideo";
 
 const Index = () => {
   const heroRef = useRef(null);
@@ -93,14 +92,26 @@ const Index = () => {
           style={{ y: heroY, scale: heroScale }}
           className="absolute inset-0"
         >
-          <SeamlessLoopVideo
-            mp4Src="/hero-drone.mp4"
-            posterSrc={heroImage}
-            className="absolute inset-0 relative overflow-hidden hero-media-drift"
-            mediaClassName="absolute inset-0 h-full w-full object-cover opacity-95 z-10"
-            overlayClassName="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 z-20 pointer-events-none"
-            fallbackImgClassName="absolute inset-0 h-full w-full object-cover opacity-95 z-0"
-          />
+          <div className="absolute inset-0 overflow-hidden">
+            <img
+              src={heroImage}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover opacity-95"
+            />
+            <video
+              className="absolute inset-0 h-full w-full object-cover opacity-95"
+              autoPlay
+              muted
+              playsInline
+              loop
+              preload="auto"
+              poster={heroImage}
+            >
+              <source src="/hero-drone.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 pointer-events-none" />
+          </div>
         </motion.div>
 
         {/* Animated Glow */}
