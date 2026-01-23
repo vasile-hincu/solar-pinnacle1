@@ -84,19 +84,17 @@ const Index = () => {
       {/* HERO SECTION */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center hero-bg overflow-hidden bg-cover bg-center"
+        className="relative isolate min-h-screen flex items-center hero-bg overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        {/* Background Image with Parallax */}
-        <motion.div
-          style={{ y: heroY, scale: heroScale }}
-          className="absolute inset-0"
-        >
+        {/* Background (keep video untransformed for iOS/Safari stability) */}
+        <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 overflow-hidden">
-            <img
+            <motion.img
               src={heroImage}
               alt=""
               aria-hidden="true"
+              style={{ y: heroY, scale: heroScale }}
               className="absolute inset-0 h-full w-full object-cover opacity-95"
             />
             <video
@@ -110,21 +108,24 @@ const Index = () => {
             >
               <source src="/hero-drone.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 pointer-events-none z-10" />
-            {/* Premium white veil over video (more visible) */}
-            <div className="absolute inset-0 bg-white/25 pointer-events-none z-20 supports-[backdrop-filter]:backdrop-blur-md supports-[backdrop-filter]:backdrop-saturate-150" />
           </div>
-        </motion.div>
+        </div>
+
+        {/* Full-cover white overlays over entire hero background (no blur) */}
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <div className="absolute inset-0 bg-white/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white/70" />
+        </div>
 
         {/* Animated Glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[150px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "1s" }} />
+        <div className="absolute z-5 top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[150px] animate-pulse" />
+        <div className="absolute z-5 bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: "1s" }} />
 
         <motion.div
           style={{ opacity: heroOpacity }}
           className="container mx-auto px-6 relative z-20"
         >
-          <div className="max-w-4xl">
+          <div className="max-w-4xl rounded-3xl bg-white/35 border border-white/55 shadow-[0_20px_60px_rgba(15,23,42,0.12)] px-6 py-8 md:px-10 md:py-12">
             {/* Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -138,7 +139,7 @@ const Index = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="premium-badge"
+                  className="premium-badge backdrop-blur-none bg-white/55 border-white/70 shadow-[0_8px_22px_rgba(15,23,42,0.08)]"
                 >
                   <badge.icon className="w-4 h-4" />
                   <span>{badge.text}</span>
@@ -151,10 +152,10 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] mb-6"
+              className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] mb-6 text-foreground drop-shadow-[0_2px_18px_rgba(255,255,255,0.9)]"
             >
               Energia viitorului,{" "}
-              <span className="text-gradient-primary">instalată la perfecție.</span>
+              <span className="text-gradient-primary drop-shadow-[0_2px_18px_rgba(255,255,255,0.9)]">instalată la perfecție.</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -162,11 +163,11 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl"
+              className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl drop-shadow-[0_2px_16px_rgba(255,255,255,0.85)]"
             >
               Stații fotovoltaice On-Grid, Off-Grid și Hybrid – 6kW, 10kW, 15kW+
               <br />
-              <span className="text-foreground font-medium">X&C Botnari SRL</span> – Liderul pieței din Moldova.
+              <span className="text-primary font-semibold">X&C Botnari SRL</span> – Liderul pieței din Moldova.
             </motion.p>
 
             {/* CTAs */}
