@@ -6,6 +6,7 @@ type SeamlessLoopVideoProps = {
   posterSrc?: string;
   className?: string;
   mediaClassName?: string;
+  overlayClassName?: string;
   fadeMs?: number;
   fallbackImgClassName?: string;
   onVideoError?: () => void;
@@ -17,6 +18,7 @@ export function SeamlessLoopVideo({
   posterSrc,
   className,
   mediaClassName,
+  overlayClassName,
   fadeMs = 1200,
   fallbackImgClassName,
   onVideoError,
@@ -129,12 +131,15 @@ export function SeamlessLoopVideo({
 
   if (videoFailed) {
     return posterSrc ? (
-      <img
-        src={posterSrc}
-        alt=""
-        aria-hidden="true"
-        className={fallbackImgClassName}
-      />
+      <div className={className}>
+        <img
+          src={posterSrc}
+          alt=""
+          aria-hidden="true"
+          className={fallbackImgClassName}
+        />
+        {overlayClassName ? <div className={overlayClassName} /> : null}
+      </div>
     ) : null;
   }
 
@@ -180,6 +185,8 @@ export function SeamlessLoopVideo({
         {webmSrc ? <source src={webmSrc} type="video/webm" /> : null}
         <source src={mp4Src} type="video/mp4" />
       </video>
+
+      {overlayClassName ? <div className={overlayClassName} /> : null}
 
       {needsUserGesture ? (
         <button

@@ -89,13 +89,13 @@ const Index = () => {
           style={{ y: heroY, scale: heroScale }}
           className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/35 to-background/75 z-10" />
           <SeamlessLoopVideo
             mp4Src="/hero-drone.mp4"
             webmSrc="/hero-drone.webm"
             posterSrc={heroImage}
-            className="absolute inset-0"
-            mediaClassName="absolute inset-0 h-full w-full object-cover opacity-70 hero-media-drift"
+            className="absolute inset-0 relative"
+            mediaClassName="absolute inset-0 h-full w-full object-cover opacity-70 hero-media-drift z-0"
+            overlayClassName="absolute inset-0 bg-gradient-to-b from-background/60 via-background/35 to-background/75 z-10 pointer-events-none"
             fallbackImgClassName="h-full w-full object-cover opacity-55 hero-media-drift"
           />
         </motion.div>
