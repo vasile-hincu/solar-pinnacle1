@@ -83,7 +83,11 @@ const Index = () => {
   return (
     <Layout>
       {/* HERO SECTION */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center hero-bg overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center hero-bg overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
         {/* Background Image with Parallax */}
         <motion.div
           style={{ y: heroY, scale: heroScale }}
