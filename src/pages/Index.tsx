@@ -110,6 +110,8 @@ const Index = () => {
             >
               <source src="/hero-drone.mp4" type="video/mp4" />
             </video>
+            {/* Subtle premium white veil over video */}
+            <div className="absolute inset-0 bg-white/12 backdrop-blur-[1px] pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 pointer-events-none" />
           </div>
         </motion.div>
