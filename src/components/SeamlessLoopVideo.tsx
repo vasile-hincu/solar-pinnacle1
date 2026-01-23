@@ -29,14 +29,14 @@ export function SeamlessLoopVideo({
   const switchingRef = useRef(false);
 
   const [active, setActive] = useState<"a" | "b">("a");
-  const [videoFailed, setVideoFailed] = useState(false);
+  const [mode, setMode] = useState<"seamless" | "simple" | "failed">("seamless");
   const [needsUserGesture, setNeedsUserGesture] = useState(false);
   const [showPlayControl, setShowPlayControl] = useState(false);
 
   const fadeSeconds = useMemo(() => Math.max(0.6, fadeMs / 1000), [fadeMs]);
 
   useEffect(() => {
-    if (videoFailed) return;
+    if (mode !== "seamless") return;
 
     const activeVideo = active === "a" ? videoARef.current : videoBRef.current;
     const inactiveVideo = active === "a" ? videoBRef.current : videoARef.current;
@@ -59,7 +59,7 @@ export function SeamlessLoopVideo({
 
         // Unsupported source/codec can reject play().
         if (err?.name === "NotSupportedError") {
-          setVideoFailed(true);
+          setMode("failed");
           onVideoError?.();
           return false;
         }
@@ -158,9 +158,9 @@ export function SeamlessLoopVideo({
       if (rafIdRef.current) window.cancelAnimationFrame(rafIdRef.current);
       cleanup?.();
     };
-  }, [active, fadeMs, fadeSeconds, videoFailed]);
+  }, [active, fadeMs, fadeSeconds, mode]);
 
-  if (videoFailed) {
+  if (mode === "failed") {
     return posterSrc ? (
       <div className={className}>
         <img
@@ -178,6 +178,53 @@ export function SeamlessLoopVideo({
     ) : null;
   }
 
+  if (mode === "simple") {
+    return (
+      <div className={className}>
+        <video
+          ref={videoARef}
+          muted
+          playsInline
+          autoPlay
+          loop
+          preload="auto"
+          controls={false}
+          disablePictureInPicture
+          className={mediaClassName}
+          onPlaying={() => {
+            setShowPlayControl(false);
+            setNeedsUserGesture(false);
+          }}
+          onPause={() => setShowPlayControl(true)}
+          onError={() => {
+            setMode("failed");
+            onVideoError?.();
+          }}
+        >
+          {webmSrc ? <source src={webmSrc} type="video/webm" /> : null}
+          <source src={mp4Src} type="video/mp4" />
+        </video>
+
+        {overlayClassName ? <div className={overlayClassName} /> : null}
+
+        {(needsUserGesture || showPlayControl) ? (
+          <button
+            type="button"
+            onClick={() => {
+              const v = videoARef.current;
+              void v?.play();
+              setShowPlayControl(false);
+              setNeedsUserGesture(false);
+            }}
+            className="absolute bottom-4 right-4 z-20 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur hover:bg-background/90"
+          >
+            Pornește video
+          </button>
+        ) : null}
+      </div>
+    );
+  }
+
   const commonVideoProps = {
     muted: true,
     playsInline: true,
@@ -186,8 +233,9 @@ export function SeamlessLoopVideo({
     disablePictureInPicture: true,
     preload: "auto" as const,
     onError: () => {
-      setVideoFailed(true);
-      onVideoError?.();
+      // Some browsers/devices don't like 2 simultaneous videos (even muted/autoplay).
+      // Try a simpler single-video loop before falling back to the poster.
+      setMode((prev) => (prev === "seamless" ? "simple" : "failed"));
     },
     className: mediaClassName,
     style: {
