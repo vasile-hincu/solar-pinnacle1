@@ -91,7 +91,6 @@ const Index = () => {
         >
           <SeamlessLoopVideo
             mp4Src="/hero-drone.mp4"
-            webmSrc="/hero-drone.webm"
             posterSrc={heroImage}
             className="absolute inset-0 relative"
             mediaClassName="absolute inset-0 h-full w-full object-cover opacity-70 hero-media-drift z-0"
