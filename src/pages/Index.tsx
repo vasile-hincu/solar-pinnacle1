@@ -125,7 +125,7 @@ const Index = () => {
           style={{ opacity: heroOpacity }}
           className="container mx-auto px-6 relative z-20"
         >
-          <div className="max-w-4xl rounded-3xl bg-white/35 border border-white/55 shadow-[0_20px_60px_rgba(15,23,42,0.12)] px-6 py-8 md:px-10 md:py-12">
+          <div className="max-w-4xl px-6 py-8 md:px-10 md:py-12">
             {/* Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
