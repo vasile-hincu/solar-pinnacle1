@@ -33,6 +33,15 @@ export function SeamlessLoopVideo({
   const [needsUserGesture, setNeedsUserGesture] = useState(false);
   const [showPlayControl, setShowPlayControl] = useState(false);
 
+  const posterLayer = posterSrc ? (
+    <img
+      src={posterSrc}
+      alt=""
+      aria-hidden="true"
+      className={fallbackImgClassName}
+    />
+  ) : null;
+
   const fadeSeconds = useMemo(() => Math.max(0.6, fadeMs / 1000), [fadeMs]);
 
   useEffect(() => {
@@ -163,12 +172,7 @@ export function SeamlessLoopVideo({
   if (mode === "failed") {
     return posterSrc ? (
       <div className={className}>
-        <img
-          src={posterSrc}
-          alt=""
-          aria-hidden="true"
-          className={fallbackImgClassName}
-        />
+        {posterLayer}
         {overlayClassName ? <div className={overlayClassName} /> : null}
 
         <div className="absolute bottom-4 right-4 z-20 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur">
@@ -181,6 +185,7 @@ export function SeamlessLoopVideo({
   if (mode === "simple") {
     return (
       <div className={className}>
+        {posterLayer}
         <video
           ref={videoARef}
           muted
@@ -245,6 +250,7 @@ export function SeamlessLoopVideo({
 
   return (
     <div className={className}>
+      {posterLayer}
       <video
         ref={videoARef}
         {...commonVideoProps}
