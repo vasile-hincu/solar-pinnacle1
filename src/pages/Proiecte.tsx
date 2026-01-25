@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import {
@@ -16,6 +17,7 @@ import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
+import { absoluteUrl } from "@/lib/seo";
 
 type FilterType = "all" | "6kw" | "10kw" | "15kw" | "on-grid" | "off-grid" | "hybrid";
 
@@ -137,6 +139,23 @@ const Proiecte = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Proiecte fotovoltaice realizate în Moldova | X&amp;C Botnari</title>
+        <meta
+          name="description"
+          content="Descoperă proiecte reale de sisteme fotovoltaice instalate în Moldova (On-Grid, Off-Grid, Hybrid) și rezultatele obținute: economii, autonomie și backup."
+        />
+        <link rel="canonical" href={absoluteUrl("/proiecte")} />
+        <meta property="og:title" content="Proiecte fotovoltaice – X&C Botnari" />
+        <meta
+          property="og:description"
+          content="Exemple de sisteme instalate în Moldova și rezultate reale pentru case și afaceri."
+        />
+        <meta property="og:url" content={absoluteUrl("/proiecte")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+      </Helmet>
+
       {/* HERO */}
       <section className="py-32 hero-bg relative overflow-hidden">
         <div className="absolute inset-0">

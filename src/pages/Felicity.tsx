@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import {
@@ -21,6 +22,7 @@ import battery16kwImage from "@/assets/16kw acc.png";
 import battery23kwImage from "@/assets/23kw acc.png";
 import felicityInverterImage from "@/assets/felicity invertor 12kw.png";
 import deyeInverterImage from "@/assets/deye 15kw.webp";
+import { absoluteUrl } from "@/lib/seo";
 
 const Felicity = () => {
   const batteries = [
@@ -117,6 +119,23 @@ const Felicity = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Baterii Felicity LiFePO4 și invertoare hibride în Moldova | X&amp;C Botnari</title>
+        <meta
+          name="description"
+          content="Import oficial Felicity în Moldova: baterii LiFePO4, invertoare hibride și soluții de stocare energie. Consultanță, configurare și montaj complet."
+        />
+        <link rel="canonical" href={absoluteUrl("/felicity")} />
+        <meta property="og:title" content="Felicity în Moldova – baterii și invertoare | X&C Botnari" />
+        <meta
+          property="og:description"
+          content="Baterii LiFePO4 Felicity și invertoare hibride, cu suport și garanție în Moldova."
+        />
+        <meta property="og:url" content={absoluteUrl("/felicity")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+      </Helmet>
+
       {/* HERO */}
       <section className="relative min-h-screen flex items-center hero-bg overflow-hidden">
         <div className="absolute inset-0">

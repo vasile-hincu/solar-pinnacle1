@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { absoluteUrl } from "@/lib/seo";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,15 +11,35 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+    <>
+      <Helmet>
+        <title>Pagina nu a fost găsită (404) | X&amp;C Botnari</title>
+        <meta
+          name="description"
+          content="Pagina pe care o cauți nu există sau a fost mutată. Revino la pagina principală sau contactează-ne pentru ajutor."
+        />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href={absoluteUrl(location.pathname)} />
+        <meta property="og:title" content="404 – X&C Botnari" />
+        <meta
+          property="og:description"
+          content="Pagina solicitată nu a fost găsită."
+        />
+        <meta property="og:url" content={absoluteUrl(location.pathname)} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+      </Helmet>
+
+      <div className="flex min-h-screen items-center justify-center bg-muted">
+        <div className="text-center">
+          <h1 className="mb-4 text-4xl font-bold">404</h1>
+          <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
+          <a href="/" className="text-primary underline hover:text-primary/90">
+            Return to Home
+          </a>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

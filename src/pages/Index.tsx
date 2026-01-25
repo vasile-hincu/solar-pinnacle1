@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
@@ -18,6 +19,7 @@ import {
 } from "lucide-react";
 import heroImage from "@/assets/hero-solar.jpg";
 import pvSystemImage from "@/assets/installation-work.jpg";
+import { absoluteUrl } from "@/lib/seo";
 
 const Index = () => {
   const heroRef = useRef(null);
@@ -81,6 +83,50 @@ const Index = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Panouri fotovoltaice în Moldova | Instalare stații solare – X&amp;C Botnari</title>
+        <meta
+          name="description"
+          content="Instalare sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova. Consultare, proiectare și montaj complet. Importator Felicity, garanție și suport premium."
+        />
+        <link rel="canonical" href={absoluteUrl("/")} />
+        <meta property="og:title" content="Panouri fotovoltaice în Moldova – X&C Botnari" />
+        <meta
+          property="og:description"
+          content="Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid. Consultare, proiectare și instalare în Moldova."
+        />
+        <meta property="og:url" content={absoluteUrl("/")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "X&C Botnari SRL",
+            url: absoluteUrl("/"),
+            email: "contact@xcbotnari.md",
+            telephone: "+37378901362",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Chișinău",
+              addressCountry: "MD",
+            },
+            areaServed: "Moldova",
+            sameAs: ["https://wa.me/37378901362"],
+            makesOffer: {
+              "@type": "OfferCatalog",
+              name: "Sisteme fotovoltaice",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instalare sisteme On-Grid" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instalare sisteme Off-Grid" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instalare sisteme Hybrid" } },
+              ],
+            },
+          })}
+        </script>
+      </Helmet>
+
       {/* HERO SECTION */}
       <section
         ref={heroRef}

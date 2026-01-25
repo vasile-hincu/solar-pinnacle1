@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import {
   ArrowRight,
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 import { sendContactEmail } from "@/lib/emailService";
 import { toast } from "sonner";
+import { absoluteUrl } from "@/lib/seo";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -105,6 +107,23 @@ const Contact = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Contact | Ofertă pentru sistem fotovoltaic în Moldova – X&amp;C Botnari</title>
+        <meta
+          name="description"
+          content="Cere o ofertă personalizată pentru panouri fotovoltaice, baterii și invertor. Îți răspundem rapid cu recomandări și estimare de cost pentru Moldova."
+        />
+        <link rel="canonical" href={absoluteUrl("/contact")} />
+        <meta property="og:title" content="Contact – X&C Botnari" />
+        <meta
+          property="og:description"
+          content="Solicită o ofertă pentru sisteme fotovoltaice și stocare energie în Moldova."
+        />
+        <meta property="og:url" content={absoluteUrl("/contact")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+      </Helmet>
+
       {/* HERO */}
       <section className="py-32 hero-bg relative overflow-hidden">
         <div className="absolute inset-0">

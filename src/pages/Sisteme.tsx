@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import {
@@ -15,6 +16,7 @@ import {
   Sun,
 } from "lucide-react";
 import heroImage from "@/assets/hero-solar.jpg";
+import { absoluteUrl } from "@/lib/seo";
 
 const Sisteme = () => {
   const systems = [
@@ -127,6 +129,23 @@ const Sisteme = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova | X&amp;C Botnari</title>
+        <meta
+          name="description"
+          content="Alege sistemul potrivit pentru casă sau afacere: On-Grid pentru economii, Off-Grid pentru autonomie, Hybrid pentru backup. Consultanță și instalare în Moldova."
+        />
+        <link rel="canonical" href={absoluteUrl("/sisteme")} />
+        <meta property="og:title" content="Sisteme fotovoltaice în Moldova – X&C Botnari" />
+        <meta
+          property="og:description"
+          content="On-Grid, Off-Grid și Hybrid: consultanță, proiectare și instalare sisteme fotovoltaice în Moldova."
+        />
+        <meta property="og:url" content={absoluteUrl("/sisteme")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+      </Helmet>
+
       {/* HERO */}
       <section className="relative py-32 overflow-hidden hero-bg">
         <div className="absolute inset-0">

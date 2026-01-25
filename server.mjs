@@ -43,9 +43,11 @@ app.use("*", async (req, res) => {
       render = (await import(path.resolve(__dirname, "dist/server/entry-server.js"))).render;
     }
 
-    const { appHtml } = await render(url);
+    const { appHtml, headTags = "" } = await render(url);
 
-    const html = template.replace("<!--app-html-->", appHtml);
+    const html = template
+      .replace("<!--head-tags-->", headTags)
+      .replace("<!--app-html-->", appHtml);
 
     res.status(200).set({ "Content-Type": "text/html" }).end(html);
   } catch (e) {
