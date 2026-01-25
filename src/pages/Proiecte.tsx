@@ -13,10 +13,17 @@ import {
   Zap,
 } from "lucide-react";
 
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
+import project1Fallback from "@/assets/project-1.jpg";
+import project2Fallback from "@/assets/project-2.jpg";
+import project3Fallback from "@/assets/project-3.jpg";
+import project4Fallback from "@/assets/project-4.jpg";
+
+import projectReal1 from "@/assets/projects/project-real-1.jpg";
+import projectReal2 from "@/assets/projects/project-real-2.jpg";
+import projectReal3 from "@/assets/projects/project-real-3.jpg";
+import projectReal4 from "@/assets/projects/project-real-4.jpg";
+import projectReal5 from "@/assets/projects/project-real-5.jpg";
+import projectReal6 from "@/assets/projects/project-real-6.jpg";
 import { absoluteUrl } from "@/lib/seo";
 
 type FilterType = "all" | "6kw" | "10kw" | "15kw" | "on-grid" | "off-grid" | "hybrid";
@@ -37,7 +44,9 @@ const Proiecte = () => {
   const projects = [
     {
       id: 1,
-      image: project1,
+      imageSrc: projectReal1,
+      fallbackImage: project1Fallback,
+      imageAlt: "Sistem fotovoltaic pe acoperiș – proiect instalat în Chișinău (15kW, Hybrid)",
       location: "Chișinău, Centru",
       power: "15kW",
       type: "hybrid" as const,
@@ -48,7 +57,9 @@ const Proiecte = () => {
     },
     {
       id: 2,
-      image: project2,
+      imageSrc: projectReal2,
+      fallbackImage: project2Fallback,
+      imageAlt: "Sistem fotovoltaic Off-Grid – proiect instalat în Orhei (6kW)",
       location: "Orhei, sat. Pelivan",
       power: "6kW",
       type: "off-grid" as const,
@@ -59,7 +70,9 @@ const Proiecte = () => {
     },
     {
       id: 3,
-      image: project3,
+      imageSrc: projectReal3,
+      fallbackImage: project3Fallback,
+      imageAlt: "Sistem fotovoltaic On-Grid pentru afacere – proiect instalat în Bălți (30kW)",
       location: "Bălți, zona industrială",
       power: "30kW",
       type: "on-grid" as const,
@@ -70,7 +83,9 @@ const Proiecte = () => {
     },
     {
       id: 4,
-      image: project4,
+      imageSrc: projectReal4,
+      fallbackImage: project4Fallback,
+      imageAlt: "Sistem fotovoltaic Hybrid pentru casă – proiect instalat în Ialoveni (10kW)",
       location: "Ialoveni",
       power: "10kW",
       type: "hybrid" as const,
@@ -81,7 +96,9 @@ const Proiecte = () => {
     },
     {
       id: 5,
-      image: project1,
+      imageSrc: projectReal5,
+      fallbackImage: project1Fallback,
+      imageAlt: "Sistem fotovoltaic On-Grid pentru casă – proiect instalat în Strășeni (8kW)",
       location: "Strășeni",
       power: "8kW",
       type: "on-grid" as const,
@@ -92,7 +109,9 @@ const Proiecte = () => {
     },
     {
       id: 6,
-      image: project3,
+      imageSrc: projectReal6,
+      fallbackImage: project3Fallback,
+      imageAlt: "Sistem fotovoltaic Off-Grid pentru fermă – proiect instalat în Comrat (25kW)",
       location: "Comrat",
       power: "25kW",
       type: "off-grid" as const,
@@ -229,8 +248,13 @@ const Proiecte = () => {
                       {/* Image */}
                       <div className="relative overflow-hidden aspect-[4/3]">
                         <img
-                          src={project.image}
-                          alt={`Proiect ${project.location}`}
+                          src={project.imageSrc}
+                          alt={project.imageAlt}
+                          loading="lazy"
+                          decoding="async"
+                          onError={(e) => {
+                            e.currentTarget.src = project.fallbackImage;
+                          }}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
