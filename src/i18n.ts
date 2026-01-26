@@ -12,9 +12,7 @@ const detectInitialLanguage = (): SupportedLng => {
   const stored = window.localStorage.getItem("lng");
   if (stored === "ro" || stored === "ru") return stored;
 
-  const nav = window.navigator?.language?.toLowerCase?.() ?? "";
-  if (nav.startsWith("ru")) return "ru";
-
+  // Default to Romanian on first load.
   return "ro";
 };
 
