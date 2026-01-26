@@ -14,18 +14,35 @@ export interface ContactFormData {
   phone: string;
   email: string;
   systemType: string;
+  kw?: string;
+  batteryKwh?: string;
+  mounting?: string;
+  estimatedPriceEur?: string;
   message: string;
 }
 
 export const sendContactEmail = async (formData: ContactFormData): Promise<boolean> => {
   try {
+    const summaryLines = [
+      formData.systemType ? `Tip sistem: ${formData.systemType}` : undefined,
+      formData.kw ? `Putere: ${formData.kw} kW` : undefined,
+      formData.batteryKwh ? `Baterie: ${formData.batteryKwh} kWh` : undefined,
+      formData.mounting ? `Montaj: ${formData.mounting}` : undefined,
+      formData.estimatedPriceEur ? `Preț estimat: ${formData.estimatedPriceEur} EUR` : undefined,
+    ].filter(Boolean);
+
+    const messageWithSummary =
+      summaryLines.length > 0
+        ? `${summaryLines.join("\n")}\n\nMesaj client:\n${formData.message || "(fără mesaj)"}`
+        : formData.message;
+
     const emailParams = {
       to_email: 'vasea.2003.55@gmail.com',
       from_name: formData.name,
       from_email: formData.email || 'noreply@solarpinnacle.md',
       phone: formData.phone,
       system_type: formData.systemType || 'Nu a specificat',
-      message: formData.message,
+      message: messageWithSummary,
       reply_to: formData.email,
     };
 

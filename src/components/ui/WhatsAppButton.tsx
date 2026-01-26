@@ -2,9 +2,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Phone, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const WhatsAppButton = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const whatsappUrl = useMemo(() => "https://wa.me/37378901362", []);
   const callUrl = useMemo(() => "tel:+37378901362", []);
@@ -36,7 +38,7 @@ export const WhatsAppButton = () => {
             transition={{ duration: 0.18 }}
             className="absolute bottom-16 right-0 w-[280px] rounded-xl border border-white/10 bg-background/95 backdrop-blur shadow-xl"
             role="dialog"
-            aria-label="Contact rapid"
+            aria-label={t("whatsapp.nudgeAria")}
           >
             <div className="flex items-start gap-3 p-4">
               <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366]/15">
@@ -44,9 +46,9 @@ export const WhatsAppButton = () => {
               </div>
 
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-semibold leading-5">Vrei o ofertă rapidă?</p>
+                <p className="text-sm font-semibold leading-5">{t("whatsapp.nudgeTitle")}</p>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Sună acum sau cere o consultație pe WhatsApp.
+                  {t("whatsapp.nudgeDesc")}
                 </p>
 
                 <div className="mt-3 flex items-center gap-2">
@@ -56,7 +58,7 @@ export const WhatsAppButton = () => {
                     className="inline-flex items-center gap-1 rounded-lg border border-border bg-background px-3 py-2 text-xs font-medium hover:bg-accent/10"
                   >
                     <Phone className="h-4 w-4" />
-                    Sună acum
+                    {t("whatsapp.callNow")}
                   </a>
 
                   <a
@@ -76,7 +78,7 @@ export const WhatsAppButton = () => {
                 type="button"
                 onClick={dismissNudge}
                 className="rounded-md p-1 text-muted-foreground hover:bg-accent/10 hover:text-foreground"
-                aria-label="Închide"
+                aria-label={t("whatsapp.close")}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -98,7 +100,7 @@ export const WhatsAppButton = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-shadow duration-300 hover:shadow-xl"
-        aria-label="Deschide WhatsApp"
+        aria-label={t("whatsapp.open")}
       >
         <MessageCircle className="h-6 w-6 text-white" />
         <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-accent animate-ping" />

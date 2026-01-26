@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation();
+  const services = t("footer.servicesItems", { returnObjects: true }) as unknown;
+  const servicesList = Array.isArray(services) ? (services as string[]) : [];
   return (
     <footer className="bg-background border-t border-border">
       <div className="container mx-auto px-6 py-16">
@@ -11,7 +15,7 @@ export const Footer = () => {
             <Link to="/" className="flex items-center gap-3">
               <img 
                 src="/logo.png"
-                alt="X&C Botnari - Conectăm Soarele la Casa ta!"
+                alt={`X&C Botnari - ${t("common.brandTagline")}`}
                 className="h-12 w-auto object-contain"
                 onError={(e) => {
                   e.currentTarget.src = "/logo.svg";
@@ -22,13 +26,12 @@ export const Footer = () => {
                   X&C Botnari
                 </span>
                 <span className="text-[10px] text-muted-foreground tracking-wide">
-                  Conectăm Soarele la Casa ta!
+                  {t("common.brandTagline")}
                 </span>
               </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Liderul pieței fotovoltaice din Republica Moldova. 
-              Construim sisteme energetice inteligente pentru viitorul tău.
+              {t("footer.brandText")}
             </p>
             <div className="flex gap-4">
               <a
@@ -59,14 +62,15 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Navigare</h4>
+            <h4 className="font-display font-semibold text-lg mb-6">{t("footer.navTitle")}</h4>
             <ul className="space-y-3">
               {[
-                { name: "Acasă", href: "/" },
-                { name: "Tipuri de Sisteme", href: "/sisteme" },
-                { name: "Felicity", href: "/felicity" },
-                { name: "Proiecte Realizate", href: "/proiecte" },
-                { name: "Contact", href: "/contact" },
+                { name: t("nav.home"), href: "/" },
+                { name: t("nav.systems"), href: "/sisteme" },
+                { name: t("nav.felicity"), href: "/felicity" },
+                { name: t("nav.projects"), href: "/proiecte" },
+                { name: t("nav.prices"), href: "/preturi" },
+                { name: t("nav.contact"), href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -82,16 +86,9 @@ export const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Servicii</h4>
+            <h4 className="font-display font-semibold text-lg mb-6">{t("footer.servicesTitle")}</h4>
             <ul className="space-y-3">
-              {[
-                "Sisteme On-Grid",
-                "Sisteme Off-Grid",
-                "Sisteme Hybrid",
-                "Baterii Felicity",
-                "Invertoare Premium",
-                "Consultanță Energetică",
-              ].map((service) => (
+              {servicesList.map((service) => (
                 <li key={service}>
                   <span className="text-muted-foreground text-sm">{service}</span>
                 </li>
@@ -101,12 +98,12 @@ export const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6">Contact</h4>
+            <h4 className="font-display font-semibold text-lg mb-6">{t("footer.contactTitle")}</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary mt-0.5" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Telefon</p>
+                  <p className="text-sm text-muted-foreground">{t("footer.phoneLabel")}</p>
                   <a
                     href="tel:+37378901362"
                     className="text-foreground hover:text-primary transition-colors"
@@ -118,7 +115,7 @@ export const Footer = () => {
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary mt-0.5" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
+                  <p className="text-sm text-muted-foreground">{t("footer.emailLabel")}</p>
                   <a
                     href="mailto:contact@xcbotnari.md"
                     className="text-foreground hover:text-primary transition-colors"
@@ -130,9 +127,9 @@ export const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Adresă</p>
+                  <p className="text-sm text-muted-foreground">{t("footer.addressLabel")}</p>
                   <span className="text-foreground">
-                    Chișinău, Republica Moldova
+                    {t("footer.addressValue")}
                   </span>
                 </div>
               </li>
@@ -144,10 +141,10 @@ export const Footer = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} X&C Botnari SRL. Toate drepturile rezervate.
+            © {new Date().getFullYear()} X&C Botnari SRL. {t("footer.copyright")}
           </p>
           <p className="text-sm text-muted-foreground">
-            Importator oficial și exclusiv <span className="text-accent font-medium">Felicity</span> în Moldova
+            {t("footer.officialImporter")} <span className="text-accent font-medium">Felicity</span> {t("footer.importerSuffix")}
           </p>
         </div>
       </div>

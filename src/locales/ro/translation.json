@@ -1,0 +1,650 @@
+{
+  "common": {
+    "brandTagline": "Conectăm Soarele la Casa ta!",
+    "requestQuote": "Cere Ofertă",
+    "callNow": "Sună acum",
+    "choose": "Alege",
+    "learnMore": "Află mai mult",
+    "contact": "Contact",
+    "prices": "Prețuri",
+    "systems": "Sisteme",
+    "home": "Acasă",
+    "felicity": "Felicity",
+    "projects": "Proiecte"
+  },
+  "video": {
+    "play": "Pornește video",
+    "unavailable": "Video indisponibil"
+  },
+  "nav": {
+    "home": "Acasă",
+    "systems": "Sisteme",
+    "felicity": "Felicity",
+    "projects": "Proiecte",
+    "prices": "Prețuri",
+    "contact": "Contact",
+    "cta": "Cere Ofertă",
+    "language": "Limba"
+  },
+  "footer": {
+    "brandText": "Liderul pieței fotovoltaice din Republica Moldova. Construim sisteme energetice inteligente pentru viitorul tău.",
+    "navTitle": "Navigare",
+    "servicesTitle": "Servicii",
+    "contactTitle": "Contact",
+    "copyright": "Toate drepturile rezervate.",
+    "officialImporter": "Importator oficial și exclusiv",
+    "importerSuffix": "în Moldova",
+    "phoneLabel": "Telefon",
+    "emailLabel": "Email",
+    "addressLabel": "Adresă",
+    "addressValue": "Chișinău, Republica Moldova",
+    "servicesItems": [
+      "Sisteme On-Grid",
+      "Sisteme Off-Grid",
+      "Sisteme Hybrid",
+      "Baterii Felicity",
+      "Invertoare Premium",
+      "Consultanță Energetică"
+    ]
+  },
+  "pricing": {
+    "seo": {
+      "title": "Prețuri | Sisteme fotovoltaice On-Grid, Hybrid, Off-Grid – X&C Botnari",
+      "description": "Vezi prețuri orientative pentru sisteme fotovoltaice On-Grid, Hybrid și Off-Grid în Moldova. Alege puterea (kW) și cere o ofertă personalizată.",
+      "ogTitle": "Prețuri – X&C Botnari",
+      "ogDescription": "Prețuri orientative și configurator în funcție de kW. Hybrid este cel mai popular, cu baterii Felicity."
+    },
+    "badge": "Prețuri în EUR • la cheie (consultanță → dare în exploatare)",
+    "title": "Prețuri pentru sisteme fotovoltaice adaptate la tine",
+    "subtitle": "Alege tipul de sistem, puterea (kW), montajul (acoperiș/carcasă) și bateria (Hybrid/Off-Grid). Folosim panouri Longi 640W – model X10 (ultima generație).",
+    "configBadge": "Configurator",
+    "configTitle": "Estimare rapidă, în funcție de kW",
+    "configDesc": "Prețurile sunt orientative și pot varia în funcție de echipamente, structuri, cablaj, distanțe și complexitatea instalării.",
+    "cta24h": "Cere ofertă în 24h",
+    "ctaCompare": "Vezi diferențele între sisteme",
+    "systemPower": "Putere sistem",
+    "mounting": "Montaj panouri",
+    "mountRoof": "Acoperiș",
+    "mountGround": "Carcasă",
+    "mountGroundHint": "Montajul pe carcasă include structură + lucrări suplimentare.",
+    "battery": "Baterie (kWh)",
+    "batteryNone": "Nu este necesară",
+    "batteryNoteOnGrid": "On-Grid nu necesită baterie.",
+    "batteryNoteHybrid": "Hybrid/Off-Grid: baterii Felicity, dimensionare după consum.",
+    "estimate": "Estimare orientativă",
+    "tierResidential": "Rezidențial / Casnic",
+    "tierBusiness": "Business",
+    "bonusTitle": "Bonus: conectare 380V de la 10kW",
+    "bonusDesc": "Oferim cadou conectarea 380V (unde este posibil tehnic).",
+    "panelsLine": "Panouri: {{panels}} × 640W = {{kwp}}kW (rotunjim în sus ca să ai cel puțin cât ai cerut, fără să depășim cu mai mult de 1 panou)",
+    "reference": "Referință: 10kW pe acoperiș = {{price}}",
+    "batteryLine": "Baterie: {{battery}}kWh (Felicity)",
+    "offGridHint": "Off-Grid: preț estimat similar cu Hybrid, configurare după consum și sezon.",
+    "mountGroundLine": "Montaj pe carcasă: +{{extra}}",
+    "hybridPopular": "Popular",
+    "hybrid": "Hybrid",
+    "onGrid": "On-Grid",
+    "offGrid": "Off-Grid",
+    "ctaExact": "Cere ofertă exactă",
+    "ctaContact": "Vezi contact",
+    "includesTitle": "Ce include pachetul",
+    "includesItems": {
+      "consulting": "Consultanță + analiză consum (gratuit)",
+      "design": "Proiectare și dimensionare corectă",
+      "fullSystem": "Sistem complet (panouri + invertor + protecții)",
+      "gridIntegration": "Integrare cu rețeaua și setări",
+      "batteries": "Baterii Felicity (Hybrid/Off-Grid)",
+      "structure": "Structuri, cablaj, protecții DC/AC, împământare",
+      "install": "Montaj profesional + testare",
+      "commissioning": "Punere în exploatare + instructaj client"
+    },
+    "felicityBoxTitle": "Lucrăm cu bateriile Felicity",
+    "felicityBoxDesc": "Hybrid este alegerea preferată în Moldova: îți oferă economii + backup la pene de curent, iar stocarea o facem pe baterii Felicity (importator exclusiv).",
+    "whyEstimatesTitle": "De ce prețuri „orientative”?",
+    "whyEstimatesP1": "Fiecare proiect diferă: orientarea acoperișului, structura, distanțele, tablourile, tipul invertorului și nivelul de automatizare pot schimba costul.",
+    "whyEstimatesP2": "Noi preferăm transparența: îți dăm o estimare rapidă aici, apoi o ofertă exactă după o scurtă discuție.",
+    "talkToExpert": "Discută cu un expert",
+    "faq": {
+      "badge": "Întrebări",
+      "title": "FAQ despre prețuri",
+      "description": "Răspunsuri rapide la cele mai frecvente întrebări înainte să ceri oferta.",
+      "items": [
+        {
+          "q": "Cât de exactă este estimarea de pe site?",
+          "a": "Estimarea este orientativă, ca să înțelegi rapid ordinea de mărime. Oferta finală se stabilește după consum, locație, tip de acoperiș, distanțe și echipamente."
+        },
+        {
+          "q": "De ce Hybrid este cel mai popular?",
+          "a": "Pentru că îți oferă economii la factură și backup automat la pene de curent. În plus, îl poți extinde ușor cu baterii suplimentare sau putere mai mare."
+        },
+        {
+          "q": "Lucrați cu baterii Felicity?",
+          "a": "Da. Suntem importator exclusiv Felicity în Moldova și proiectăm sistemele Hybrid/Off-Grid cu baterii Felicity în funcție de autonomia dorită."
+        },
+        {
+          "q": "Ce înseamnă bonusul 380V de la 10kW?",
+          "a": "Pentru proiecte de la 10kW, putem include conectarea 380V ca bonus (unde este posibil tehnic și conform condițiilor din locație). Detaliile se confirmă în ofertă."
+        },
+        {
+          "q": "În cât timp primesc oferta?",
+          "a": "De regulă în 24 ore, după ce ne dai câteva informații (consum, locație, tipul sistemului)."
+        }
+      ]
+    },
+    "finalCtaTitle": "Vrei o ofertă exactă pentru {{kw}}kW?",
+    "finalCtaDesc": "Trimite-ne detaliile și îți propunem configurația optimă (inclusiv baterii Felicity pentru Hybrid/Off-Grid).",
+    "finalCtaButton": "Cere ofertă",
+    "systems": {
+      "onGrid": {
+        "title": "On-Grid",
+        "badge": "Economii maxime",
+        "description": "Ideal pentru case și afaceri cu rețea stabilă. Folosești energia solară în timp real, iar surplusul poate fi livrat în rețea.",
+        "bullets": [
+          "Cost de pornire cel mai accesibil",
+          "ROI rapid (în funcție de consum)",
+          "Întreținere minimă"
+        ],
+        "note": "Preț orientativ pentru pachet complet (la cheie). Configurația finală depinde de acoperiș/sol, distanțe, tablouri și acte."
+      },
+      "hybrid": {
+        "title": "Hybrid",
+        "badge": "Cel mai popular",
+        "description": "Cel mai echilibrat sistem: economisești, ai backup la pene de curent și control total asupra consumului.",
+        "bullets": [
+          "Backup automat la întreruperi",
+          "Baterii Felicity (importator exclusiv)",
+          "Invertor Deye sau Felicity (în funcție de proiect)",
+          "Panouri Longi 640W – model X10 (ultima generație)"
+        ],
+        "note": "Alegi capacitatea bateriei, iar noi dimensionăm totul corect (autonomie, consum, backup)."
+      },
+      "offGrid": {
+        "title": "Off-Grid",
+        "badge": "Independență totală",
+        "description": "Pentru locații fără rețea sau acolo unde vrei autonomie completă. Energia se stochează în baterii și se gestionează inteligent.",
+        "bullets": [
+          "Zero dependență de rețea",
+          "Baterii Felicity + management energie",
+          "Invertor Deye sau Felicity (în funcție de proiect)",
+          "Panouri Longi 640W – model X10 (ultima generație)"
+        ],
+        "note": "Off-Grid se dimensionează strict după consum și sezon. Aici alegi bateria, iar oferta finală o confirmăm după o scurtă analiză."
+      }
+    },
+    "inverterLine": "Invertor Deye sau Felicity (în funcție de proiect)",
+    "felicityBatteryLine": "Baterii Felicity (importator exclusiv)",
+    "longiLine": "Panouri Longi 640W – model X10 (ultima generație)"
+  },
+  "contactPage": {
+    "seo": {
+      "title": "Contact | Ofertă pentru sistem fotovoltaic în Moldova – X&C Botnari",
+      "description": "Cere o ofertă personalizată pentru panouri fotovoltaice, baterii și invertor. Îți răspundem rapid cu recomandări și estimare de cost pentru Moldova.",
+      "ogTitle": "Contact – X&C Botnari",
+      "ogDescription": "Solicită o ofertă pentru sisteme fotovoltaice și stocare energie în Moldova."
+    },
+    "errors": {
+      "requiredNamePhone": "Te rugăm să completezi nume și telefon",
+      "generic": "A apărut o eroare. Te rugăm să încerci din nou.",
+      "submitFailed": "A apărut o eroare la trimiterea mesajului"
+    },
+    "toast": {
+      "success": "Mesaj trimis cu succes! Te vom contacta în curând.",
+      "error": "Eroare la trimiterea mesajului"
+    },
+    "contactInfo": {
+      "phone": { "label": "Telefon", "description": "Luni - Vineri, 8:00 - 18:00" },
+      "whatsapp": { "label": "WhatsApp", "description": "Răspundem rapid" },
+      "email": { "label": "Email", "description": "Răspuns în 24 ore" },
+      "address": { "label": "Adresă", "description": "Vizite cu programare" }
+    },
+    "benefits": [
+      "Consultare gratuită și fără obligații",
+      "Analiză personalizată a consumului",
+      "Ofertă detaliată în 24 ore",
+      "Instalare profesională rapidă"
+    ],
+    "whyContact": "De ce să ne contactezi?",
+    "heroBadge": "Contact",
+    "heroTitle": "Hai să construim sistemul tău energetic perfect",
+    "heroSubtitle": "Suntem aici să răspundem la toate întrebările tale și să îți oferim cea mai bună soluție pentru nevoile tale energetice.",
+    "infoTitle": "Informații de Contact",
+    "infoSubtitle": "Alege modalitatea preferată de comunicare. Suntem mereu disponibili să te ajutăm.",
+    "formTitle": "Solicită o Ofertă Personalizată",
+    "fullName": "Nume complet",
+    "phone": "Telefon",
+    "email": "Email",
+    "systemType": "Tip sistem interesat",
+    "message": "Mesaj",
+    "submit": "Trimite solicitarea",
+    "submitting": "Se trimite...",
+    "privacy": "Prin trimiterea formularului, ești de acord cu politica noastră de confidențialitate.",
+    "successTitle": "Mesaj trimis cu succes!",
+    "successDesc": "Îți mulțumim pentru interes. Te vom contacta în cel mai scurt timp posibil.",
+    "sendAnother": "Trimite alt mesaj",
+    "summaryTitle": "Sumar selectat",
+    "summarySystem": "Sistem",
+    "summaryPower": "Putere",
+    "summaryMount": "Montaj",
+    "summaryBattery": "Baterie",
+    "summaryEstimate": "Estimare din calculator",
+    "summaryApprox": "orientativ",
+    "placeholders": {
+      "fullName": "Ion Popescu",
+      "phone": "+373 60 000 000",
+      "email": "email@exemplu.md",
+      "power": "Ex: 6",
+      "message": "Descrie pe scurt nevoile tale sau întrebările pe care le ai..."
+    },
+    "form": {
+      "systemPlaceholder": "Selectează tipul de sistem",
+      "systemUnknown": "Nu știu încă",
+      "powerLabel": "Putere sistem (kW)",
+      "mountLabel": "Montaj panouri",
+      "mountRoof": "Pe acoperiș",
+      "mountGround": "Pe carcasă (la sol) • +1000€",
+      "batteryLabel": "Capacitate baterie (kWh)",
+      "batteryPlaceholder": "Selectează capacitatea",
+      "batteryOther": "Altă capacitate (scrie în mesaj)"
+    },
+    "mountHint": "Montajul pe carcasă (la sol) este, de regulă, cu ~1000€ mai scump (structură + lucrări).",
+    "batteryHint": "Lucrăm cu baterii Felicity și dimensionăm autonomia după consum.",
+    "mapTitle": "Ne găsești în Chișinău",
+    "mapSubtitle": "Vizitează-ne la sediu pentru o consultare față în față"
+  },
+  "projectsPage": {
+    "seo": {
+      "title": "Proiecte fotovoltaice realizate în Moldova | X&C Botnari",
+      "description": "Descoperă proiecte reale de sisteme fotovoltaice instalate în Moldova (On-Grid, Off-Grid, Hybrid) și rezultatele obținute: economii, autonomie și backup.",
+      "ogTitle": "Proiecte fotovoltaice – X&C Botnari",
+      "ogDescription": "Exemple de sisteme instalate în Moldova și rezultate reale pentru case și afaceri."
+    },
+    "hero": {
+      "badge": "Portofoliu",
+      "title": "Proiecte",
+      "titleHighlight": "Realizate",
+      "subtitle": "Peste 850 de sisteme fotovoltaice instalate în toată Moldova. Fiecare proiect este o dovadă a calității și profesionalismului nostru."
+    },
+    "filters": {
+      "all": "Toate",
+      "6kw": "6 kW",
+      "10kw": "10 kW",
+      "15kw": "15kW+",
+      "on-grid": "On-Grid",
+      "off-grid": "Off-Grid",
+      "hybrid": "Hybrid"
+    },
+    "typeLabels": {
+      "on-grid": "On-Grid",
+      "off-grid": "Off-Grid",
+      "hybrid": "Hybrid"
+    },
+    "empty": "Nu există proiecte în această categorie. Încearcă alt filtru.",
+    "cta": {
+      "title": "Fii următorul nostru",
+      "titleHighlight": "proiect de succes",
+      "subtitle": "Alătură-te sutelor de clienți mulțumiți care au ales X&C Botnari pentru tranziția lor la energia solară.",
+      "button": "Începe proiectul tău"
+    },
+    "projects": {
+      "1": {
+        "imageAlt": "Sistem fotovoltaic pe acoperiș – proiect instalat în Chișinău (15kW, Hybrid)",
+        "location": "Chișinău, Centru",
+        "result": "Economie 85% la factura de curent",
+        "testimonial": "Am redus facturile de la 3000 lei la 450 lei lunar. Investiția se amortizează în 4 ani.",
+        "client": "Familie Rusu"
+      },
+      "2": {
+        "imageAlt": "Sistem fotovoltaic Off-Grid – proiect instalat în Orhei (6kW)",
+        "location": "Orhei, sat. Pelivan",
+        "result": "Independență totală de rețea",
+        "testimonial": "Cabana noastră de vacanță acum are energie 24/7, chiar și iarna.",
+        "client": "Ion Munteanu"
+      },
+      "3": {
+        "imageAlt": "Sistem fotovoltaic On-Grid pentru afacere – proiect instalat în Bălți (30kW)",
+        "location": "Bălți, zona industrială",
+        "result": "ROI în 3.5 ani",
+        "testimonial": "Ca afacere, am redus dramatic costurile operaționale. Recomand cu încredere.",
+        "client": "SRL TechnoFarm"
+      },
+      "4": {
+        "imageAlt": "Sistem fotovoltaic Hybrid pentru casă – proiect instalat în Ialoveni (10kW)",
+        "location": "Ialoveni",
+        "result": "Zero facturi + backup complet",
+        "testimonial": "Sistemul hybrid ne oferă liniște completă. Nu mai depindem de nimeni.",
+        "client": "Familie Popescu"
+      },
+      "5": {
+        "imageAlt": "Sistem fotovoltaic On-Grid pentru casă – proiect instalat în Strășeni (8kW)",
+        "location": "Strășeni",
+        "result": "Economie 70% la energie",
+        "testimonial": "Profesionalism maxim, de la consultare până la punere în funcțiune.",
+        "client": "Alexandru Ceban"
+      },
+      "6": {
+        "imageAlt": "Sistem fotovoltaic Off-Grid pentru fermă – proiect instalat în Comrat (25kW)",
+        "location": "Comrat",
+        "result": "Fermă complet autonomă",
+        "testimonial": "Am electrificat întreaga fermă fără a depinde de rețeaua națională.",
+        "client": "Agro-Bio SRL"
+      }
+    }
+  },
+  "systemsPage": {
+    "seo": {
+      "title": "Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova | X&C Botnari",
+      "description": "Alege sistemul potrivit pentru casă sau afacere: On-Grid pentru economii, Off-Grid pentru autonomie, Hybrid pentru backup. Consultanță și instalare în Moldova.",
+      "ogTitle": "Sisteme fotovoltaice în Moldova – X&C Botnari",
+      "ogDescription": "On-Grid, Off-Grid și Hybrid: consultanță, proiectare și instalare sisteme fotovoltaice în Moldova."
+    },
+    "hero": {
+      "badge": "Soluții Complete",
+      "title": "Tipuri de",
+      "titleHighlight": "Sisteme Fotovoltaice",
+      "subtitle": "Fiecare casă, fiecare afacere are nevoi unice. Descoperă soluția perfectă pentru tine și transformă-ți acoperișul într-o sursă de venit.",
+      "imageAlt": "Sisteme solare"
+    },
+    "forWhomTitle": "Pentru cine este?",
+    "advantagesTitle": "Avantaje principale",
+    "requestConsultation": "Solicită consultare {{system}}",
+    "cta": {
+      "title": "Nu știi ce sistem ți se potrivește?",
+      "subtitle": "Consultanții noștri îți vor analiza consumul și îți vor recomanda soluția optimă pentru nevoile tale specifice.",
+      "button": "Programează o consultare gratuită"
+    },
+    "systems": {
+      "on-grid": {
+        "title": "On-Grid",
+        "subtitle": "Conectat la rețea • Economii maxime",
+        "description": "Sistemele On-Grid sunt conectate direct la rețeaua electrică națională. Energia solară produsă este utilizată instant în casă, iar surplusul este livrat în rețea, reducând semnificativ facturile.",
+        "forWhom": [
+          "Case și apartamente cu consum moderat-mare",
+          "Afaceri și birouri",
+          "Zone cu rețea electrică stabilă",
+          "Cei care doresc ROI rapid"
+        ],
+        "advantages": [
+          "Cel mai mic cost de instalare",
+          "Fără baterii = mai puține componente",
+          "Facturi electrice reduse cu până la 90%",
+          "Compensare net-metering disponibilă",
+          "Întreținere minimă",
+          "Amortizare în 4-6 ani"
+        ],
+        "scenarios": {
+          "home": {
+            "title": "Casă familială",
+            "description": "Sistem 6-10kW pentru o familie de 4 persoane"
+          },
+          "business": {
+            "title": "Afacere mică",
+            "description": "Sistem 15-30kW pentru reducerea costurilor operaționale"
+          }
+        }
+      },
+      "off-grid": {
+        "title": "Off-Grid",
+        "subtitle": "Complet autonom • Independență totală",
+        "description": "Sistemele Off-Grid funcționează complet independent de rețeaua electrică. Toată energia este stocată în baterii performante, oferind autonomie 24/7, indiferent de condițiile externe.",
+        "forWhom": [
+          "Case în zone rurale fără rețea",
+          "Cabane de vacanță",
+          "Ferme și gospodării agricole",
+          "Cei care doresc independență totală"
+        ],
+        "advantages": [
+          "Zero dependență de rețea",
+          "Imunitate la întreruperi",
+          "Ideal pentru zone izolate",
+          "Energie curată, non-stop",
+          "Valoare adăugată proprietății",
+          "Siguranță pe termen lung"
+        ],
+        "scenarios": {
+          "cabin": {
+            "title": "Cabană montană",
+            "description": "Sistem 5-8kW cu stocare pentru 2-3 zile"
+          },
+          "farm": {
+            "title": "Fermă agricolă",
+            "description": "Sistem 20-50kW pentru irigații și utilaje"
+          }
+        }
+      },
+      "hybrid": {
+        "title": "Hybrid",
+        "subtitle": "Best of both worlds • Control absolut",
+        "description": "Sistemele Hybrid combină avantajele On-Grid și Off-Grid. Sunt conectate la rețea pentru economii, dar au și baterii pentru backup. Oferă flexibilitate maximă și control total asupra energiei.",
+        "forWhom": [
+          "Case cu consum variabil",
+          "Zone cu întreruperi frecvente",
+          "Clienți care doresc control maxim",
+          "Investitori în energie verde"
+        ],
+        "advantages": [
+          "Economii + independență",
+          "Backup automat în caz de pană",
+          "Prioritizare inteligentă a consumului",
+          "Compatibil cu tarife diferențiate",
+          "Extensibil în timp",
+          "Cel mai versatil sistem"
+        ],
+        "scenarios": {
+          "modernHome": {
+            "title": "Casă modernă",
+            "description": "Sistem 10kW + 10kWh stocare pentru familie premium"
+          },
+          "criticalBusiness": {
+            "title": "Business critic",
+            "description": "Sistem 25kW cu backup pentru continuitate operațională"
+          }
+        }
+      }
+    }
+  },
+  "felicityPage": {
+    "seo": {
+      "title": "Baterii Felicity LiFePO4 și invertoare hibride în Moldova | X&C Botnari",
+      "description": "Import oficial Felicity în Moldova: baterii LiFePO4, invertoare hibride și soluții de stocare energie. Consultanță, configurare și montaj complet.",
+      "ogTitle": "Felicity în Moldova – baterii și invertoare | X&C Botnari",
+      "ogDescription": "Baterii LiFePO4 Felicity și invertoare hibride, cu suport și garanție în Moldova."
+    },
+    "hero": {
+      "badgeTitle": "Unicii importatori Felicity în Moldova",
+      "badgeSubtitle": "X&C Botnari SRL • import oficial • suport & garanție",
+      "title": "Tehnologia care stochează viitorul.",
+      "subtitle": "Baterii premium LiFePO4 și invertoare de înaltă performanță. X&C Botnari SRL – singura companie din Moldova cu acces direct la linia Felicity.",
+      "ctaPrimary": "Consultă un specialist",
+      "ctaSecondary": "Vezi produsele",
+      "floatingBadge": {
+        "title": "Eficiență 95%+",
+        "subtitle": "Garanție 10 ani"
+      }
+    },
+    "benefits": {
+      "badge": "De ce Felicity?",
+      "title": "Avantaje care fac",
+      "titleHighlight": "diferența",
+      "description": "Tehnologie de ultimă generație, validată global, acum disponibilă în Moldova.",
+      "items": {
+        "lifepo4": {
+          "title": "Tehnologie LiFePO4",
+          "description": "Cea mai sigură și durabilă chimie pentru baterii. Zero risc de incendiu."
+        },
+        "modular": {
+          "title": "Scalabilitate modulară",
+          "description": "Capacitatea poate fi extinsă pe viitor, în funcție de necesități."
+        },
+        "warranty": {
+          "title": "Garanție 10 ani",
+          "description": "Investiție protejată pe termen lung, cu suport tehnic dedicat."
+        },
+        "temperature": {
+          "title": "Funcționare -20°C până la 55°C",
+          "description": "Performanță stabilă în orice condiții climatice din Moldova."
+        },
+        "bms": {
+          "title": "BMS inteligent",
+          "description": "Sistem de management al bateriei care optimizează performanța."
+        },
+        "efficiency": {
+          "title": "Eficiență 95%+",
+          "description": "Pierderi minime de energie la stocare și descărcare."
+        }
+      }
+    },
+    "batteries": {
+      "badge": "Gama de baterii",
+      "title": "Baterii Felicity",
+      "description": "De la soluții compacte la sisteme industriale. Găsește capacitatea perfectă pentru nevoile tale.",
+      "popular": "Cel mai popular",
+      "requestQuote": "Solicită ofertă",
+      "warrantyValue": "10 ani",
+      "labels": {
+        "voltage": "Voltaj",
+        "technology": "Tehnologie",
+        "warranty": "Garanție"
+      },
+      "5_5": {
+        "idealFor": "Case mici, apartamente",
+        "features": ["LiFePO4", "BMS integrat", "Montaj perete", "LCD display"]
+      },
+      "10_5": {
+        "idealFor": "Case medii, birouri mici",
+        "features": ["LiFePO4", "BMS avansat", "Scalabil", "Smart monitoring"]
+      },
+      "16": {
+        "idealFor": "Case mari, vile",
+        "features": ["LiFePO4", "High power output", "Paralelizabil", "App control"]
+      },
+      "23_5": {
+        "idealFor": "Rezidențial premium, comercial",
+        "features": ["LiFePO4", "Max capacity", "Enterprise ready", "Remote management"]
+      }
+    },
+    "inverters": {
+      "badge": "Invertoare Premium",
+      "title": "Lucrăm cu cele mai",
+      "titleHighlight": "fiabile invertoare",
+      "titleSuffix": "din lume",
+      "description": "Eficiență maximă și durabilitate dovedită. Parteneriate cu lideri globali.",
+      "premiumLabel": "Invertor Premium",
+      "felicity": {
+        "description": "Invertoare hibride de înaltă eficiență, perfect integrate cu bateriile Felicity.",
+        "features": ["Eficiență 98%+", "MPPT integrat", "Smart grid ready"]
+      },
+      "deye": {
+        "description": "Lider global în invertoare solare, cunoscut pentru fiabilitate și performanță.",
+        "features": ["Tehnologie germană", "10 ani garanție", "Compatibilitate universală"]
+      }
+    },
+    "cta": {
+      "badge": "Exclusiv în Moldova",
+      "title": "Stochează energia soarelui cu",
+      "subtitle": "Contactează-ne pentru o consultare gratuită și descoperă cum poți beneficia de cele mai avansate baterii din piață.",
+      "button": "Consultă un specialist Felicity"
+    }
+  },
+  "homePage": {
+    "seo": {
+      "title": "Panouri fotovoltaice în Moldova | Instalare stații solare – X&C Botnari",
+      "description": "Instalare sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova. Consultare, proiectare și montaj complet. Importator Felicity, garanție și suport premium.",
+      "ogTitle": "Panouri fotovoltaice în Moldova – X&C Botnari",
+      "ogDescription": "Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid. Consultare, proiectare și instalare în Moldova."
+    },
+    "schema": {
+      "addressLocality": "Chișinău",
+      "offerCatalogName": "Sisteme fotovoltaice",
+      "offerOnGrid": "Instalare sisteme On-Grid",
+      "offerOffGrid": "Instalare sisteme Off-Grid",
+      "offerHybrid": "Instalare sisteme Hybrid"
+    },
+    "badges": {
+      "exclusiveImporter": "Importator exclusiv Felicity în Moldova",
+      "numberOne": "#1 în 2025 – cele mai multe stații instalate",
+      "extendedWarranty": "Garanție extinsă și suport premium"
+    },
+    "hero": {
+      "title": "Energia viitorului,",
+      "titleHighlight": "instalată la perfecție.",
+      "subtitleLine1": "Stații fotovoltaice On-Grid, Off-Grid și Hybrid – 6kW, 10kW, 15kW+",
+      "subtitleLine2": "– Liderul pieței din Moldova.",
+      "ctaPrimary": "Cere o ofertă personalizată",
+      "ctaSecondary": "Programează o consultare"
+    },
+    "solutionsSection": {
+      "badge": "Soluții Complete",
+      "title": "Tipuri de",
+      "titleHighlight": "Sisteme",
+      "description": "Fiecare proiect este unic. Oferim soluții personalizate pentru nevoile tale energetice."
+    },
+    "solutions": {
+      "onGrid": {
+        "title": "On-Grid",
+        "subtitle": "Economii maxime",
+        "description": "Conectat la rețeaua electrică pentru economii semnificative la facturi."
+      },
+      "offGrid": {
+        "title": "Off-Grid",
+        "subtitle": "Independență totală",
+        "description": "Complet independent de rețea, ideal pentru zone izolate."
+      },
+      "hybrid": {
+        "title": "Hybrid",
+        "subtitle": "Control absolut",
+        "description": "Combinația perfectă între economii și independență energetică."
+      }
+    },
+    "stats": {
+      "installedStations": "Stații instalate",
+      "totalPower": "Putere totală montată",
+      "experience": "Experiență în domeniu",
+      "happyClients": "Clienți mulțumiți",
+      "yearsSuffix": "ani"
+    },
+    "whyUs": {
+      "badge": "De ce noi?",
+      "title": "Nu instalăm doar panouri.",
+      "titleHighlight": "Proiectăm și implementăm soluții complete.",
+      "description": "Cu peste 8 ani de experiență și sute de proiecte finalizate, X&C Botnari SRL este alegerea clară pentru cei care doresc calitate fără compromis.",
+      "reasons": [
+        "Lider de piață în Moldova",
+        "Echipamente premium certificate",
+        "Echipă de instalatori experimentați",
+        "Garanție extinsă pe toate produsele",
+        "Suport tehnic 24/7",
+        "Prețuri competitive fără compromis"
+      ],
+      "linkProjects": "Vezi proiectele noastre",
+      "imageAlt": "Sistem fotovoltaic premium",
+      "overlayTitle": "Baterii Felicity",
+      "overlaySubtitle": "Importator exclusiv Moldova",
+      "floatingStat": "Putere instalată"
+    },
+    "finalCta": {
+      "title": "Alege liderul.",
+      "titleHighlight": "Alege siguranța.",
+      "subtitle": "Fiecare zi fără energie solară este o zi în care plătești mai mult. Hai să schimbăm asta împreună.",
+      "primary": "Începe acum",
+      "secondary": "Descoperă Felicity"
+    }
+  },
+  "notFound": {
+    "seo": {
+      "title": "Pagina nu a fost găsită (404) | X&C Botnari",
+      "description": "Pagina pe care o cauți nu există sau a fost mutată. Revino la pagina principală sau contactează-ne pentru ajutor.",
+      "ogTitle": "404 – X&C Botnari",
+      "ogDescription": "Pagina solicitată nu a fost găsită."
+    },
+    "title": "Oops! Pagina nu a fost găsită",
+    "backHome": "Înapoi acasă"
+  },
+  "whatsapp": {
+    "nudgeAria": "Contact rapid",
+    "nudgeTitle": "Vrei o ofertă rapidă?",
+    "nudgeDesc": "Sună acum sau cere o consultație pe WhatsApp.",
+    "callNow": "Sună acum",
+    "close": "Închide",
+    "open": "Deschide WhatsApp"
+  }
+}

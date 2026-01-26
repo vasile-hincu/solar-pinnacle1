@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { useTranslation } from "react-i18next";
 import {
   ArrowRight,
   Battery,
@@ -30,15 +31,16 @@ type FilterType = "all" | "6kw" | "10kw" | "15kw" | "on-grid" | "off-grid" | "hy
 
 const Proiecte = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+  const { t } = useTranslation();
 
   const filters: { key: FilterType; label: string }[] = [
-    { key: "all", label: "Toate" },
-    { key: "6kw", label: "6 kW" },
-    { key: "10kw", label: "10 kW" },
-    { key: "15kw", label: "15kW+" },
-    { key: "on-grid", label: "On-Grid" },
-    { key: "off-grid", label: "Off-Grid" },
-    { key: "hybrid", label: "Hybrid" },
+    { key: "all", label: t("projectsPage.filters.all") },
+    { key: "6kw", label: t("projectsPage.filters.6kw") },
+    { key: "10kw", label: t("projectsPage.filters.10kw") },
+    { key: "15kw", label: t("projectsPage.filters.15kw") },
+    { key: "on-grid", label: t("projectsPage.filters.on-grid") },
+    { key: "off-grid", label: t("projectsPage.filters.off-grid") },
+    { key: "hybrid", label: t("projectsPage.filters.hybrid") },
   ];
 
   const projects = [
@@ -46,79 +48,79 @@ const Proiecte = () => {
       id: 1,
       imageSrc: projectReal1,
       fallbackImage: project1Fallback,
-      imageAlt: "Sistem fotovoltaic pe acoperiș – proiect instalat în Chișinău (15kW, Hybrid)",
-      location: "Chișinău, Centru",
+      imageAlt: t("projectsPage.projects.1.imageAlt"),
+      location: t("projectsPage.projects.1.location"),
       power: "15kW",
       type: "hybrid" as const,
       powerFilter: "15kw" as const,
-      result: "Economie 85% la factura de curent",
-      testimonial: "Am redus facturile de la 3000 lei la 450 lei lunar. Investiția se amortizează în 4 ani.",
-      client: "Familie Rusu",
+      result: t("projectsPage.projects.1.result"),
+      testimonial: t("projectsPage.projects.1.testimonial"),
+      client: t("projectsPage.projects.1.client"),
     },
     {
       id: 2,
       imageSrc: projectReal2,
       fallbackImage: project2Fallback,
-      imageAlt: "Sistem fotovoltaic Off-Grid – proiect instalat în Orhei (6kW)",
-      location: "Orhei, sat. Pelivan",
+      imageAlt: t("projectsPage.projects.2.imageAlt"),
+      location: t("projectsPage.projects.2.location"),
       power: "6kW",
       type: "off-grid" as const,
       powerFilter: "6kw" as const,
-      result: "Independență totală de rețea",
-      testimonial: "Cabana noastră de vacanță acum are energie 24/7, chiar și iarna.",
-      client: "Ion Munteanu",
+      result: t("projectsPage.projects.2.result"),
+      testimonial: t("projectsPage.projects.2.testimonial"),
+      client: t("projectsPage.projects.2.client"),
     },
     {
       id: 3,
       imageSrc: projectReal3,
       fallbackImage: project3Fallback,
-      imageAlt: "Sistem fotovoltaic On-Grid pentru afacere – proiect instalat în Bălți (30kW)",
-      location: "Bălți, zona industrială",
+      imageAlt: t("projectsPage.projects.3.imageAlt"),
+      location: t("projectsPage.projects.3.location"),
       power: "30kW",
       type: "on-grid" as const,
       powerFilter: "15kw" as const,
-      result: "ROI în 3.5 ani",
-      testimonial: "Ca afacere, am redus dramatic costurile operaționale. Recomand cu încredere.",
-      client: "SRL TechnoFarm",
+      result: t("projectsPage.projects.3.result"),
+      testimonial: t("projectsPage.projects.3.testimonial"),
+      client: t("projectsPage.projects.3.client"),
     },
     {
       id: 4,
       imageSrc: projectReal4,
       fallbackImage: project4Fallback,
-      imageAlt: "Sistem fotovoltaic Hybrid pentru casă – proiect instalat în Ialoveni (10kW)",
-      location: "Ialoveni",
+      imageAlt: t("projectsPage.projects.4.imageAlt"),
+      location: t("projectsPage.projects.4.location"),
       power: "10kW",
       type: "hybrid" as const,
       powerFilter: "10kw" as const,
-      result: "Zero facturi + backup complet",
-      testimonial: "Sistemul hybrid ne oferă liniște completă. Nu mai depindem de nimeni.",
-      client: "Familie Popescu",
+      result: t("projectsPage.projects.4.result"),
+      testimonial: t("projectsPage.projects.4.testimonial"),
+      client: t("projectsPage.projects.4.client"),
     },
     {
       id: 5,
       imageSrc: projectReal5,
       fallbackImage: project1Fallback,
-      imageAlt: "Sistem fotovoltaic On-Grid pentru casă – proiect instalat în Strășeni (8kW)",
-      location: "Strășeni",
+      imageAlt: t("projectsPage.projects.5.imageAlt"),
+      location: t("projectsPage.projects.5.location"),
       power: "8kW",
       type: "on-grid" as const,
       powerFilter: "6kw" as const,
-      result: "Economie 70% la energie",
-      testimonial: "Profesionalism maxim, de la consultare până la punere în funcțiune.",
-      client: "Alexandru Ceban",
+      result: t("projectsPage.projects.5.result"),
+      testimonial: t("projectsPage.projects.5.testimonial"),
+      client: t("projectsPage.projects.5.client"),
     },
     {
       id: 6,
       imageSrc: projectReal6,
       fallbackImage: project3Fallback,
-      imageAlt: "Sistem fotovoltaic Off-Grid pentru fermă – proiect instalat în Comrat (25kW)",
-      location: "Comrat",
+      imageAlt: t("projectsPage.projects.6.imageAlt"),
+      location: t("projectsPage.projects.6.location"),
       power: "25kW",
       type: "off-grid" as const,
       powerFilter: "15kw" as const,
-      result: "Fermă complet autonomă",
-      testimonial: "Am electrificat întreaga fermă fără a depinde de rețeaua națională.",
-      client: "Agro-Bio SRL",
+      result: t("projectsPage.projects.6.result"),
+      testimonial: t("projectsPage.projects.6.testimonial"),
+      client: t("projectsPage.projects.6.client"),
     },
   ];
 
@@ -159,16 +161,16 @@ const Proiecte = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Proiecte fotovoltaice realizate în Moldova | X&amp;C Botnari</title>
+        <title>{t("projectsPage.seo.title")}</title>
         <meta
           name="description"
-          content="Descoperă proiecte reale de sisteme fotovoltaice instalate în Moldova (On-Grid, Off-Grid, Hybrid) și rezultatele obținute: economii, autonomie și backup."
+          content={t("projectsPage.seo.description")}
         />
         <link rel="canonical" href={absoluteUrl("/proiecte")} />
-        <meta property="og:title" content="Proiecte fotovoltaice – X&C Botnari" />
+        <meta property="og:title" content={t("projectsPage.seo.ogTitle")} />
         <meta
           property="og:description"
-          content="Exemple de sisteme instalate în Moldova și rezultate reale pentru case și afaceri."
+          content={t("projectsPage.seo.ogDescription")}
         />
         <meta property="og:url" content={absoluteUrl("/proiecte")} />
         <meta property="og:type" content="website" />
@@ -190,15 +192,14 @@ const Proiecte = () => {
           >
             <span className="premium-badge mb-6 inline-flex">
               <Zap className="w-4 h-4" />
-              Portofoliu
+              {t("projectsPage.hero.badge")}
             </span>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-              Proiecte{" "}
-              <span className="text-gradient-primary">Realizate</span>
+              {t("projectsPage.hero.title")}{" "}
+              <span className="text-gradient-primary">{t("projectsPage.hero.titleHighlight")}</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Peste 850 de sisteme fotovoltaice instalate în toată Moldova. 
-              Fiecare proiect este o dovadă a calității și profesionalismului nostru.
+              {t("projectsPage.hero.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -268,7 +269,7 @@ const Proiecte = () => {
                           >
                             <TypeIcon className="w-4 h-4" />
                             <span className="text-sm font-medium capitalize">
-                              {project.type}
+                              {t(`projectsPage.typeLabels.${project.type}`)}
                             </span>
                           </div>
                         </div>
@@ -321,7 +322,7 @@ const Proiecte = () => {
               className="text-center py-20"
             >
               <p className="text-muted-foreground text-lg">
-                Nu există proiecte în această categorie. Încearcă alt filtru.
+                {t("projectsPage.empty")}
               </p>
             </motion.div>
           )}
@@ -340,18 +341,17 @@ const Proiecte = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Fii următorul nostru{" "}
-              <span className="text-gradient-primary">proiect de succes</span>
+              {t("projectsPage.cta.title")}{" "}
+              <span className="text-gradient-primary">{t("projectsPage.cta.titleHighlight")}</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-10">
-              Alătură-te sutelor de clienți mulțumiți care au ales X&C Botnari 
-              pentru tranziția lor la energia solară.
+              {t("projectsPage.cta.subtitle")}
             </p>
             <Link
               to="/contact"
               className="btn-premium-accent inline-flex items-center gap-2 group"
             >
-              Începe proiectul tău
+              {t("projectsPage.cta.button")}
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>

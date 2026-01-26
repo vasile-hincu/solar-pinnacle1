@@ -2,19 +2,24 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const navLinks = [
-  { name: "Acasă", href: "/" },
-  { name: "Sisteme", href: "/sisteme" },
-  { name: "Felicity", href: "/felicity" },
-  { name: "Proiecte", href: "/proiecte" },
-  { name: "Contact", href: "/contact" },
+  { key: "nav.home", href: "/" },
+  { key: "nav.systems", href: "/sisteme" },
+  { key: "nav.felicity", href: "/felicity" },
+  { key: "nav.projects", href: "/proiecte" },
+  { key: "nav.prices", href: "/preturi" },
+  { key: "nav.contact", href: "/contact" },
 ];
 
 export const Navigation = () => {
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  const currentLng = i18n.language?.startsWith("ru") ? "ru" : "ro";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +48,7 @@ export const Navigation = () => {
           <Link to="/" className="flex items-center gap-3 group">
             <img 
               src="/logo.png"
-              alt="X&C Botnari - Conectăm Soarele la Casa ta!"
+              alt={`X&C Botnari - ${t("common.brandTagline")}`}
               className="h-12 w-auto object-contain"
               onError={(e) => {
                 e.currentTarget.src = "/logo.svg";
@@ -54,7 +59,7 @@ export const Navigation = () => {
                 X&C Botnari
               </span>
               <span className="text-[10px] text-muted-foreground tracking-wide">
-                Conectăm Soarele la Casa ta!
+                {t("common.brandTagline")}
               </span>
             </div>
           </Link>
@@ -71,7 +76,7 @@ export const Navigation = () => {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {link.name}
+                {t(link.key)}
                 {location.pathname === link.href && (
                   <motion.div
                     layoutId="activeNav"
@@ -85,11 +90,31 @@ export const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
+            <div className="flex items-center gap-2 rounded-full border border-border/60 bg-secondary/30 px-2 py-1">
+              <button
+                type="button"
+                onClick={() => i18n.changeLanguage("ro")}
+                className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
+                  currentLng === "ro" ? "bg-background text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                RO
+              </button>
+              <button
+                type="button"
+                onClick={() => i18n.changeLanguage("ru")}
+                className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
+                  currentLng === "ru" ? "bg-background text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                RU
+              </button>
+            </div>
             <Link
               to="/contact"
               className="btn-premium-primary text-sm px-6 py-3"
             >
-              Cere Ofertă
+              {t("nav.cta")}
             </Link>
           </div>
 
@@ -134,7 +159,7 @@ export const Navigation = () => {
                           : "text-foreground"
                       }`}
                     >
-                      {link.name}
+                      {t(link.key)}
                     </Link>
                   </motion.div>
                 ))}
@@ -148,9 +173,30 @@ export const Navigation = () => {
                     to="/contact"
                     className="btn-premium-primary w-full text-center block"
                   >
-                    Cere Ofertă
+                    {t("nav.cta")}
                   </Link>
                 </motion.div>
+
+                <div className="pt-2 flex items-center justify-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => i18n.changeLanguage("ro")}
+                    className={`px-4 py-2 rounded-full border border-border/60 text-sm ${
+                      currentLng === "ro" ? "bg-secondary" : "bg-transparent"
+                    }`}
+                  >
+                    RO
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => i18n.changeLanguage("ru")}
+                    className={`px-4 py-2 rounded-full border border-border/60 text-sm ${
+                      currentLng === "ru" ? "bg-secondary" : "bg-transparent"
+                    }`}
+                  >
+                    RU
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>

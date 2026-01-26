@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { useTranslation } from "react-i18next";
 import {
   ArrowRight,
   Battery,
@@ -19,127 +20,88 @@ import heroImage from "@/assets/hero-solar.jpg";
 import { absoluteUrl } from "@/lib/seo";
 
 const Sisteme = () => {
-  const systems = [
+  const { t } = useTranslation();
+
+  const systemDefs = [
     {
-      id: "on-grid",
+      id: "on-grid" as const,
       icon: Grid3X3,
-      title: "On-Grid",
-      subtitle: "Conectat la rețea • Economii maxime",
-      color: "primary",
-      description:
-        "Sistemele On-Grid sunt conectate direct la rețeaua electrică națională. Energia solară produsă este utilizată instant în casă, iar surplusul este livrat în rețea, reducând semnificativ facturile.",
-      forWhom: [
-        "Case și apartamente cu consum moderat-mare",
-        "Afaceri și birouri",
-        "Zone cu rețea electrică stabilă",
-        "Cei care doresc ROI rapid",
-      ],
-      advantages: [
-        "Cel mai mic cost de instalare",
-        "Fără baterii = mai puține componente",
-        "Facturi electrice reduse cu până la 90%",
-        "Compensare net-metering disponibilă",
-        "Întreținere minimă",
-        "Amortizare în 4-6 ani",
-      ],
-      scenarios: [
-        {
-          icon: Home,
-          title: "Casă familială",
-          description: "Sistem 6-10kW pentru o familie de 4 persoane",
-        },
-        {
-          icon: Factory,
-          title: "Afacere mică",
-          description: "Sistem 15-30kW pentru reducerea costurilor operaționale",
-        },
+      color: "primary" as const,
+      scenarioDefs: [
+        { key: "home" as const, icon: Home },
+        { key: "business" as const, icon: Factory },
       ],
     },
     {
-      id: "off-grid",
+      id: "off-grid" as const,
       icon: WifiOff,
-      title: "Off-Grid",
-      subtitle: "Complet autonom • Independență totală",
-      color: "accent",
-      description:
-        "Sistemele Off-Grid funcționează complet independent de rețeaua electrică. Toată energia este stocată în baterii performante, oferind autonomie 24/7, indiferent de condițiile externe.",
-      forWhom: [
-        "Case în zone rurale fără rețea",
-        "Cabane de vacanță",
-        "Ferme și gospodării agricole",
-        "Cei care doresc independență totală",
-      ],
-      advantages: [
-        "Zero dependență de rețea",
-        "Imunitate la întreruperi",
-        "Ideal pentru zone izolate",
-        "Energie curată, non-stop",
-        "Valoare adăugată proprietății",
-        "Siguranță pe termen lung",
-      ],
-      scenarios: [
-        {
-          icon: Home,
-          title: "Cabană montană",
-          description: "Sistem 5-8kW cu stocare pentru 2-3 zile",
-        },
-        {
-          icon: Factory,
-          title: "Fermă agricolă",
-          description: "Sistem 20-50kW pentru irigații și utilaje",
-        },
+      color: "accent" as const,
+      scenarioDefs: [
+        { key: "cabin" as const, icon: Home },
+        { key: "farm" as const, icon: Factory },
       ],
     },
     {
-      id: "hybrid",
+      id: "hybrid" as const,
       icon: Zap,
-      title: "Hybrid",
-      subtitle: "Best of both worlds • Control absolut",
-      color: "energy",
-      description:
-        "Sistemele Hybrid combină avantajele On-Grid și Off-Grid. Sunt conectate la rețea pentru economii, dar au și baterii pentru backup. Oferă flexibilitate maximă și control total asupra energiei.",
-      forWhom: [
-        "Case cu consum variabil",
-        "Zone cu întreruperi frecvente",
-        "Clienți care doresc control maxim",
-        "Investitori în energie verde",
-      ],
-      advantages: [
-        "Economii + independență",
-        "Backup automat în caz de pană",
-        "Prioritizare inteligentă a consumului",
-        "Compatibil cu tarife diferențiate",
-        "Extensibil în timp",
-        "Cel mai versatil sistem",
-      ],
-      scenarios: [
-        {
-          icon: Home,
-          title: "Casă modernă",
-          description: "Sistem 10kW + 10kWh stocare pentru familie premium",
-        },
-        {
-          icon: Factory,
-          title: "Business critic",
-          description: "Sistem 25kW cu backup pentru continuitate operațională",
-        },
+      color: "energy" as const,
+      scenarioDefs: [
+        { key: "modernHome" as const, icon: Home },
+        { key: "criticalBusiness" as const, icon: Factory },
       ],
     },
   ];
 
+  const systems = systemDefs.map((def) => {
+    const content = t(`systemsPage.systems.${def.id}`, { returnObjects: true }) as unknown as {
+      title?: string;
+      subtitle?: string;
+      description?: string;
+      forWhom?: string[];
+      advantages?: string[];
+    };
+
+    const forWhom = Array.isArray(content?.forWhom) ? content.forWhom : [];
+    const advantages = Array.isArray(content?.advantages) ? content.advantages : [];
+
+    const scenarios = def.scenarioDefs.map((scenarioDef) => {
+      const scenarioContent = t(`systemsPage.systems.${def.id}.scenarios.${scenarioDef.key}`, {
+        returnObjects: true,
+      }) as unknown as { title?: string; description?: string };
+
+      return {
+        icon: scenarioDef.icon,
+        title: scenarioContent?.title ?? "",
+        description: scenarioContent?.description ?? "",
+      };
+    });
+
+    return {
+      id: def.id,
+      icon: def.icon,
+      color: def.color,
+      title: content?.title ?? "",
+      subtitle: content?.subtitle ?? "",
+      description: content?.description ?? "",
+      forWhom,
+      advantages,
+      scenarios,
+    };
+  });
+
   return (
     <Layout>
       <Helmet>
-        <title>Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova | X&amp;C Botnari</title>
+        <title>{t("systemsPage.seo.title")}</title>
         <meta
           name="description"
-          content="Alege sistemul potrivit pentru casă sau afacere: On-Grid pentru economii, Off-Grid pentru autonomie, Hybrid pentru backup. Consultanță și instalare în Moldova."
+          content={t("systemsPage.seo.description")}
         />
         <link rel="canonical" href={absoluteUrl("/sisteme")} />
-        <meta property="og:title" content="Sisteme fotovoltaice în Moldova – X&C Botnari" />
+        <meta property="og:title" content={t("systemsPage.seo.ogTitle")} />
         <meta
           property="og:description"
-          content="On-Grid, Off-Grid și Hybrid: consultanță, proiectare și instalare sisteme fotovoltaice în Moldova."
+          content={t("systemsPage.seo.ogDescription")}
         />
         <meta property="og:url" content={absoluteUrl("/sisteme")} />
         <meta property="og:type" content="website" />
@@ -151,7 +113,7 @@ const Sisteme = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Solar systems"
+            alt={t("systemsPage.hero.imageAlt")}
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
@@ -167,15 +129,14 @@ const Sisteme = () => {
           >
             <span className="premium-badge mb-6 inline-flex">
               <Sun className="w-4 h-4" />
-              Soluții Complete
+              {t("systemsPage.hero.badge")}
             </span>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-              Tipuri de{" "}
-              <span className="text-gradient-primary">Sisteme Fotovoltaice</span>
+              {t("systemsPage.hero.title")}{" "}
+              <span className="text-gradient-primary">{t("systemsPage.hero.titleHighlight")}</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Fiecare casă, fiecare afacere are nevoi unice. Descoperă soluția 
-              perfectă pentru tine și transformă-ți acoperișul într-o sursă de venit.
+              {t("systemsPage.hero.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -248,7 +209,7 @@ const Sisteme = () => {
 
                 {/* For Whom */}
                 <div className="mb-8">
-                  <h4 className="font-semibold mb-4">Pentru cine este?</h4>
+                  <h4 className="font-semibold mb-4">{t("systemsPage.forWhomTitle")}</h4>
                   <ul className="space-y-2">
                     {system.forWhom.map((item) => (
                       <li key={item} className="flex items-center gap-3">
@@ -277,7 +238,7 @@ const Sisteme = () => {
                       : "text-primary"
                   }`}
                 >
-                  <span>Solicită consultare {system.title}</span>
+                  <span>{t("systemsPage.requestConsultation", { system: system.title })}</span>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </motion.div>
@@ -293,7 +254,7 @@ const Sisteme = () => {
                 {/* Advantages Card */}
                 <div className="glass-card rounded-3xl p-8">
                   <h4 className="font-display font-semibold text-xl mb-6">
-                    Avantaje principale
+                    {t("systemsPage.advantagesTitle")}
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {system.advantages.map((advantage, i) => (
@@ -371,17 +332,16 @@ const Sisteme = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Nu știi ce sistem ți se potrivește?
+              {t("systemsPage.cta.title")}
             </h2>
             <p className="text-xl text-muted-foreground mb-10">
-              Consultanții noștri îți vor analiza consumul și îți vor recomanda 
-              soluția optimă pentru nevoile tale specifice.
+              {t("systemsPage.cta.subtitle")}
             </p>
             <Link
               to="/contact"
               className="btn-premium-accent inline-flex items-center gap-2 group"
             >
-              Programează o consultare gratuită
+              {t("systemsPage.cta.button")}
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>

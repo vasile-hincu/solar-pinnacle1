@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type SeamlessLoopVideoProps = {
   mp4Src: string;
@@ -23,6 +24,7 @@ export function SeamlessLoopVideo({
   fallbackImgClassName,
   onVideoError,
 }: SeamlessLoopVideoProps) {
+  const { t } = useTranslation();
   const videoARef = useRef<HTMLVideoElement | null>(null);
   const videoBRef = useRef<HTMLVideoElement | null>(null);
   const rafIdRef = useRef<number | null>(null);
@@ -176,7 +178,7 @@ export function SeamlessLoopVideo({
         {overlayClassName ? <div className={overlayClassName} /> : null}
 
         <div className="absolute bottom-4 right-4 z-30 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur">
-          Video indisponibil
+          {t("video.unavailable")}
         </div>
       </div>
     ) : null;
@@ -223,7 +225,7 @@ export function SeamlessLoopVideo({
             }}
             className="absolute bottom-4 right-4 z-30 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur hover:bg-background/90"
           >
-            Pornește video
+            {t("video.play")}
           </button>
         ) : null}
       </div>
@@ -288,7 +290,7 @@ export function SeamlessLoopVideo({
           }}
           className="absolute bottom-4 right-4 z-30 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur hover:bg-background/90"
         >
-          Pornește video
+          {t("video.play")}
         </button>
       ) : showPlayControl ? (
         <button
@@ -300,7 +302,7 @@ export function SeamlessLoopVideo({
           }}
           className="absolute bottom-4 right-4 z-30 rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur hover:bg-background/90"
         >
-          Pornește video
+          {t("video.play")}
         </button>
       ) : null}
     </div>

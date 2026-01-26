@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { useTranslation } from "react-i18next";
 import {
   ArrowRight,
   Award,
@@ -25,111 +26,109 @@ import deyeInverterImage from "@/assets/deye 15kw.webp";
 import { absoluteUrl } from "@/lib/seo";
 
 const Felicity = () => {
+  const { t } = useTranslation();
+
   const batteries = [
     {
+      key: "5_5",
       capacity: "5.5",
       unit: "kWh",
       name: "Felicity ESS 5.5",
-      idealFor: "Case mici, apartamente",
       voltage: "51.2V",
-      warranty: "10 ani",
-      features: ["LiFePO4", "BMS integrat", "Montaj perete", "LCD display"],
+      popular: false,
       image: battery5kwImage,
     },
     {
+      key: "10_5",
       capacity: "10.5",
       unit: "kWh",
       name: "Felicity ESS 10.5",
-      idealFor: "Case medii, birouri mici",
       voltage: "51.2V",
-      warranty: "10 ani",
-      features: ["LiFePO4", "BMS avansat", "Scalabil", "Smart monitoring"],
       popular: true,
       image: battery10kwImage,
     },
     {
+      key: "16",
       capacity: "16",
       unit: "kWh",
       name: "Felicity ESS 16",
-      idealFor: "Case mari, vile",
       voltage: "51.2V",
-      warranty: "10 ani",
-      features: ["LiFePO4", "High power output", "Paralelizabil", "App control"],
+      popular: false,
       image: battery16kwImage,
     },
     {
+      key: "23_5",
       capacity: "23.5",
       unit: "kWh",
       name: "Felicity ESS 23.5",
-      idealFor: "Rezidențial premium, comercial",
       voltage: "51.2V",
-      warranty: "10 ani",
-      features: ["LiFePO4", "Max capacity", "Enterprise ready", "Remote management"],
+      popular: false,
       image: battery23kwImage,
     },
-  ];
+  ].map((battery) => {
+    const featuresRaw = t(`felicityPage.batteries.${battery.key}.features`, {
+      returnObjects: true,
+    }) as unknown;
+    const features = Array.isArray(featuresRaw) ? (featuresRaw as string[]) : [];
+
+    return {
+      ...battery,
+      idealFor: t(`felicityPage.batteries.${battery.key}.idealFor`),
+      warranty: t("felicityPage.batteries.warrantyValue"),
+      features,
+    };
+  });
 
   const inverters = [
     {
+      key: "felicity",
       name: "Felicity",
-      description: "Invertoare hibride de înaltă eficiență, perfect integrate cu bateriile Felicity.",
-      features: ["Eficiență 98%+", "MPPT integrat", "Smart grid ready"],
       image: felicityInverterImage,
     },
     {
+      key: "deye",
       name: "Deye",
-      description: "Lider global în invertoare solare, cunoscut pentru fiabilitate și performanță.",
-      features: ["Tehnologie germană", "10 ani garanție", "Compatibilitate universală"],
       image: deyeInverterImage,
     },
-  ];
+  ].map((inverter) => {
+    const featuresRaw = t(`felicityPage.inverters.${inverter.key}.features`, {
+      returnObjects: true,
+    }) as unknown;
+    const features = Array.isArray(featuresRaw) ? (featuresRaw as string[]) : [];
+
+    return {
+      ...inverter,
+      description: t(`felicityPage.inverters.${inverter.key}.description`),
+      features,
+    };
+  });
 
   const benefits = [
-    {
-      icon: Battery,
-      title: "Tehnologie LiFePO4",
-      description: "Cea mai sigură și durabilă chimie pentru baterii. Zero risc de incendiu.",
-    },
-    {
-      icon: RefreshCcw,
-      title: "Scalabilitate modulară",
-      description: "Capacitatea poate fi extinsă pe viitor, în funcție de necesități.",
-    },
-    {
-      icon: Shield,
-      title: "Garanție 10 Ani",
-      description: "Investiție protejată pe termen lung, cu suport tehnic dedicat.",
-    },
-    {
-      icon: Thermometer,
-      title: "Funcționare -20°C până la 55°C",
-      description: "Performanță stabilă în orice condiții climatice din Moldova.",
-    },
-    {
-      icon: Cpu,
-      title: "BMS Inteligent",
-      description: "Sistem de management al bateriei care optimizează performanța.",
-    },
-    {
-      icon: Gauge,
-      title: "Eficiență 95%+",
-      description: "Pierderi minime de energie la stocare și descărcare.",
-    },
-  ];
+    { icon: Battery, key: "lifepo4" },
+    { icon: RefreshCcw, key: "modular" },
+    { icon: Shield, key: "warranty" },
+    { icon: Thermometer, key: "temperature" },
+    { icon: Cpu, key: "bms" },
+    { icon: Gauge, key: "efficiency" },
+  ].map((benefit) => ({
+    icon: benefit.icon,
+    title: t(`felicityPage.benefits.items.${benefit.key}.title`),
+    description: t(`felicityPage.benefits.items.${benefit.key}.description`),
+  }));
 
   return (
     <Layout>
       <Helmet>
-        <title>Baterii Felicity LiFePO4 și invertoare hibride în Moldova | X&amp;C Botnari</title>
+        <title>{t("felicityPage.seo.title")}</title>
         <meta
           name="description"
-          content="Import oficial Felicity în Moldova: baterii LiFePO4, invertoare hibride și soluții de stocare energie. Consultanță, configurare și montaj complet."
+          content={t("felicityPage.seo.description")}
         />
         <link rel="canonical" href={absoluteUrl("/felicity")} />
-        <meta property="og:title" content="Felicity în Moldova – baterii și invertoare | X&C Botnari" />
+        <meta property="og:title" content={t("felicityPage.seo.ogTitle")} />
         <meta
           property="og:description"
-          content="Baterii LiFePO4 Felicity și invertoare hibride, cu suport și garanție în Moldova."
+          content={t("felicityPage.seo.ogDescription")}
         />
         <meta property="og:url" content={absoluteUrl("/felicity")} />
         <meta property="og:type" content="website" />
@@ -172,10 +171,10 @@ const Felicity = () => {
                 <div className="flex min-w-0 flex-col">
                   <div className="flex items-center gap-2">
                     <Award className="h-4 w-4 text-[#F97316]" />
-                    <span className="text-sm font-semibold text-foreground">Unicii importatori Felicity în Moldova</span>
+                    <span className="text-sm font-semibold text-foreground">{t("felicityPage.hero.badgeTitle")}</span>
                   </div>
                   <span className="mt-1 text-xs text-muted-foreground">
-                    X&amp;C Botnari SRL • import oficial • suport &amp; garanție
+                    {t("felicityPage.hero.badgeSubtitle")}
                   </span>
                 </div>
               </motion.div>
@@ -183,21 +182,20 @@ const Felicity = () => {
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
                 <span className="text-gradient-accent">Felicity</span>
                 <br />
-                <span className="text-foreground">Tehnologia care stochează viitorul.</span>
+                <span className="text-foreground">{t("felicityPage.hero.title")}</span>
               </h1>
 
               <p className="text-xl text-muted-foreground mb-10 max-w-lg">
-                Baterii premium LiFePO4 și invertoare de înaltă performanță. 
-                X&C Botnari SRL – singura companie din Moldova cu acces direct la linia Felicity.
+                {t("felicityPage.hero.subtitle")}
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="btn-premium-accent flex items-center gap-2 group">
-                  Consultă un specialist
+                  {t("felicityPage.hero.ctaPrimary")}
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <a href="#baterii" className="btn-premium-outline flex items-center gap-2">
-                  Vezi produsele
+                  {t("felicityPage.hero.ctaSecondary")}
                 </a>
               </div>
             </motion.div>
@@ -237,8 +235,8 @@ const Felicity = () => {
                     <Zap className="w-6 h-6 text-energy" />
                   </div>
                   <div>
-                    <p className="font-bold text-lg">Eficiență 95%+</p>
-                    <p className="text-sm text-muted-foreground">Garanție 10 ani</p>
+                    <p className="font-bold text-lg">{t("felicityPage.hero.floatingBadge.title")}</p>
+                    <p className="text-sm text-muted-foreground">{t("felicityPage.hero.floatingBadge.subtitle")}</p>
                   </div>
                 </div>
               </motion.div>
@@ -251,13 +249,13 @@ const Felicity = () => {
       <section className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-6">
           <SectionTitle
-            badge="De ce Felicity?"
+            badge={t("felicityPage.benefits.badge")}
             title={
               <>
-                Avantaje care fac <span className="text-gradient-accent">diferența</span>
+                {t("felicityPage.benefits.title")} <span className="text-gradient-accent">{t("felicityPage.benefits.titleHighlight")}</span>
               </>
             }
-            description="Tehnologie de ultimă generație, validată global, acum disponibilă în Moldova."
+            description={t("felicityPage.benefits.description")}
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -286,13 +284,13 @@ const Felicity = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
         <div className="container mx-auto px-6 relative z-10">
           <SectionTitle
-            badge="Gama de Baterii"
+            badge={t("felicityPage.batteries.badge")}
             title={
               <>
-                Baterii Felicity <span className="text-gradient-accent">ESS</span>
+                {t("felicityPage.batteries.title")} <span className="text-gradient-accent">ESS</span>
               </>
             }
-            description="De la soluții compacte la sisteme industriale. Găsește capacitatea perfectă pentru nevoile tale."
+            description={t("felicityPage.batteries.description")}
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -309,7 +307,7 @@ const Felicity = () => {
               >
                 {battery.popular && (
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-accent text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg whitespace-nowrap">
-                    Cel mai popular
+                    {t("felicityPage.batteries.popular")}
                   </div>
                 )}
 
@@ -336,15 +334,15 @@ const Felicity = () => {
 
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Voltaj</span>
+                    <span className="text-muted-foreground">{t("felicityPage.batteries.labels.voltage")}</span>
                     <span className="font-medium text-foreground">{battery.voltage}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Tehnologie</span>
+                    <span className="text-muted-foreground">{t("felicityPage.batteries.labels.technology")}</span>
                     <span className="font-medium text-foreground">LiFePO4</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Garanție</span>
+                    <span className="text-muted-foreground">{t("felicityPage.batteries.labels.warranty")}</span>
                     <span className="font-medium text-foreground">{battery.warranty}</span>
                   </div>
                 </div>
@@ -368,7 +366,7 @@ const Felicity = () => {
                       : "bg-secondary text-foreground hover:bg-secondary/80"
                   }`}
                 >
-                  Solicită ofertă
+                  {t("felicityPage.batteries.requestQuote")}
                 </Link>
               </motion.div>
             ))}
@@ -384,13 +382,13 @@ const Felicity = () => {
 
         <div className="container mx-auto px-6 relative z-10">
           <SectionTitle
-            badge="Invertoare Premium"
+            badge={t("felicityPage.inverters.badge")}
             title={
               <>
-                Lucrăm cu cele mai <span className="text-gradient-primary">fiabile invertoare</span> din lume
+                {t("felicityPage.inverters.title")} <span className="text-gradient-primary">{t("felicityPage.inverters.titleHighlight")}</span> {t("felicityPage.inverters.titleSuffix")}
               </>
             }
-            description="Eficiență maximă și durabilitate dovedită. Parteneriate cu lideri globali."
+            description={t("felicityPage.inverters.description")}
           />
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -409,7 +407,7 @@ const Felicity = () => {
                   </div>
                   <div>
                     <h3 className="font-display text-2xl font-bold">{inverter.name}</h3>
-                    <p className="text-sm text-muted-foreground">Invertor Premium</p>
+                    <p className="text-sm text-muted-foreground">{t("felicityPage.inverters.premiumLabel")}</p>
                   </div>
                 </div>
 
@@ -456,21 +454,20 @@ const Felicity = () => {
           >
             <div className="premium-badge mb-6 inline-flex">
               <Award className="w-4 h-4" />
-              Exclusiv în Moldova
+              {t("felicityPage.cta.badge")}
             </div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Stochează energia soarelui cu{" "}
+              {t("felicityPage.cta.title")}{" "}
               <span className="text-gradient-accent">Felicity</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-10">
-              Contactează-ne pentru o consultare gratuită și descoperă cum poți 
-              beneficia de cele mai avansate baterii din piață.
+              {t("felicityPage.cta.subtitle")}
             </p>
             <Link
               to="/contact"
               className="btn-premium-accent inline-flex items-center gap-2 group"
             >
-              Consultă un specialist Felicity
+              {t("felicityPage.cta.button")}
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>

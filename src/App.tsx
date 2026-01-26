@@ -10,6 +10,7 @@ import Sisteme from "./pages/Sisteme";
 import Felicity from "./pages/Felicity";
 import Proiecte from "./pages/Proiecte";
 import Contact from "./pages/Contact";
+import Preturi from "./pages/Preturi";
 import NotFound from "./pages/NotFound";
 
 type RouterWrapper = (props: { children: ReactNode }) => ReactNode;
@@ -31,6 +32,7 @@ const App = ({ Router }: { Router: RouterWrapper }) => {
             <Route path="/sisteme" element={<Sisteme />} />
             <Route path="/felicity" element={<Felicity />} />
             <Route path="/proiecte" element={<Proiecte />} />
+            <Route path="/preturi" element={<Preturi />} />
             <Route path="/contact" element={<Contact />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

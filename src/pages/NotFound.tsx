@@ -2,9 +2,11 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { absoluteUrl } from "@/lib/seo";
+import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
@@ -13,17 +15,17 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>Pagina nu a fost găsită (404) | X&amp;C Botnari</title>
+        <title>{t("notFound.seo.title")}</title>
         <meta
           name="description"
-          content="Pagina pe care o cauți nu există sau a fost mutată. Revino la pagina principală sau contactează-ne pentru ajutor."
+          content={t("notFound.seo.description")}
         />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href={absoluteUrl(location.pathname)} />
-        <meta property="og:title" content="404 – X&C Botnari" />
+        <meta property="og:title" content={t("notFound.seo.ogTitle")} />
         <meta
           property="og:description"
-          content="Pagina solicitată nu a fost găsită."
+          content={t("notFound.seo.ogDescription")}
         />
         <meta property="og:url" content={absoluteUrl(location.pathname)} />
         <meta property="og:type" content="website" />
@@ -33,9 +35,9 @@ const NotFound = () => {
       <div className="flex min-h-screen items-center justify-center bg-muted">
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-bold">404</h1>
-          <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
+          <p className="mb-4 text-xl text-muted-foreground">{t("notFound.title")}</p>
           <a href="/" className="text-primary underline hover:text-primary/90">
-            Return to Home
+            {t("notFound.backHome")}
           </a>
         </div>
       </div>

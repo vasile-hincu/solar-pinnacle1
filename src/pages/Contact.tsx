@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
+import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   ArrowRight,
   CheckCircle2,
@@ -16,14 +18,22 @@ import { sendContactEmail } from "@/lib/emailService";
 import { toast } from "sonner";
 import { absoluteUrl } from "@/lib/seo";
 
+const initialFormData = {
+  name: "",
+  phone: "",
+  email: "",
+  systemType: "",
+  kw: "",
+  batteryKwh: "",
+  mounting: "",
+  estimatedPriceEur: "",
+  message: "",
+};
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    systemType: "",
-    message: "",
-  });
+  const { t } = useTranslation();
+  const location = useLocation();
+  const [formData, setFormData] = useState(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -36,7 +46,7 @@ const Contact = () => {
     try {
       // Validate required fields
       if (!formData.name || !formData.phone) {
-        setSubmitError("Te rugăm să completezi nume și telefon");
+        setSubmitError(t("contactPage.errors.requiredNamePhone"));
         setIsSubmitting(false);
         return;
       }
@@ -46,16 +56,16 @@ const Contact = () => {
       
       if (success) {
         setIsSubmitted(true);
-        setFormData({ name: "", phone: "", email: "", systemType: "", message: "" });
-        toast.success("Mesaj trimis cu succes! Te vom contacta în curând.");
+        setFormData(initialFormData);
+        toast.success(t("contactPage.toast.success"));
       } else {
-        setSubmitError("A apărut o eroare. Te rugăm să încerci din nou.");
-        toast.error("Eroare la trimiterea mesajului");
+        setSubmitError(t("contactPage.errors.generic"));
+        toast.error(t("contactPage.toast.error"));
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setSubmitError("A apărut o eroare la trimiterea mesajului");
-      toast.error("Eroare la trimiterea mesajului");
+      setSubmitError(t("contactPage.errors.submitFailed"));
+      toast.error(t("contactPage.toast.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -67,57 +77,100 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+
+    const systemRaw = params.get("systemType") || params.get("system") || "";
+    const kwRaw = params.get("kw") || "";
+    const batteryRaw = params.get("battery") || params.get("battery_kwh") || "";
+    const mountRaw = params.get("mount") || params.get("mounting") || "";
+    const priceRaw = params.get("price") || params.get("estimatedPriceEur") || "";
+    const panelsRaw = params.get("panels") || "";
+    const realKwpRaw = params.get("real_kwp") || "";
+
+    const normalizedSystem = (() => {
+      const v = systemRaw.trim().toLowerCase();
+      if (v === "hybrid" || v === "hibrid") return "hybrid";
+      if (v === "on-grid" || v === "ongrid" || v === "on grid") return "on-grid";
+      if (v === "off-grid" || v === "offgrid" || v === "off grid") return "off-grid";
+      return systemRaw;
+    })();
+
+    const normalizedMount = (() => {
+      const v = mountRaw.trim().toLowerCase();
+      if (v === "acoperis" || v === "acoperiș" || v === "roof") return "acoperiș";
+      if (v === "carcasa" || v === "carcasă" || v === "sol" || v === "ground") return "carcasă (la sol)";
+      return mountRaw;
+    })();
+
+    if (!systemRaw && !kwRaw && !batteryRaw && !mountRaw && !priceRaw && !panelsRaw && !realKwpRaw) return;
+
+    setFormData((prev) => ({
+      ...prev,
+      systemType: prev.systemType || (normalizedSystem as string) || "",
+      kw: prev.kw || kwRaw || "",
+      batteryKwh: prev.batteryKwh || batteryRaw || "",
+      mounting: prev.mounting || normalizedMount || "",
+      estimatedPriceEur: prev.estimatedPriceEur || priceRaw || "",
+    }));
+  }, [location.search]);
+
   const contactInfo = [
     {
       icon: Phone,
-      label: "Telefon",
+      label: t("contactPage.contactInfo.phone.label"),
       value: "078 901 362",
       href: "tel:+37378901362",
-      description: "Luni - Vineri, 8:00 - 18:00",
+      description: t("contactPage.contactInfo.phone.description"),
     },
     {
       icon: MessageCircle,
-      label: "WhatsApp",
+      label: t("contactPage.contactInfo.whatsapp.label"),
       value: "078 901 362",
       href: "https://wa.me/37378901362",
-      description: "Răspundem rapid",
+      description: t("contactPage.contactInfo.whatsapp.description"),
     },
     {
       icon: Mail,
-      label: "Email",
+      label: t("contactPage.contactInfo.email.label"),
       value: "contact@xcbotnari.md",
       href: "mailto:contact@xcbotnari.md",
-      description: "Răspuns în 24 ore",
+      description: t("contactPage.contactInfo.email.description"),
     },
     {
       icon: MapPin,
-      label: "Adresă",
-      value: "Chișinău, Republica Moldova",
+      label: t("contactPage.contactInfo.address.label"),
+      value: t("footer.addressValue"),
       href: "https://maps.google.com",
-      description: "Vizite cu programare",
+      description: t("contactPage.contactInfo.address.description"),
     },
   ];
 
-  const benefits = [
-    "Consultare gratuită și fără obligații",
-    "Analiză personalizată a consumului",
-    "Ofertă detaliată în 24 ore",
-    "Instalare profesională rapidă",
-  ];
+  const benefitsRaw = t("contactPage.benefits", { returnObjects: true }) as unknown;
+  const benefits = Array.isArray(benefitsRaw) ? (benefitsRaw as string[]) : [];
+
+  const systemLabel = (value: string) => {
+    const v = value.trim().toLowerCase();
+    if (v === "on-grid" || v === "ongrid" || v === "on grid") return t("pricing.onGrid");
+    if (v === "off-grid" || v === "offgrid" || v === "off grid") return t("pricing.offGrid");
+    if (v === "hybrid" || v === "hibrid") return t("pricing.hybrid");
+    if (v === "nu-stiu" || v === "nu știu" || v === "nu stiu") return t("contactPage.form.systemUnknown");
+    return value;
+  };
 
   return (
     <Layout>
       <Helmet>
-        <title>Contact | Ofertă pentru sistem fotovoltaic în Moldova – X&amp;C Botnari</title>
+        <title>{t("contactPage.seo.title")}</title>
         <meta
           name="description"
-          content="Cere o ofertă personalizată pentru panouri fotovoltaice, baterii și invertor. Îți răspundem rapid cu recomandări și estimare de cost pentru Moldova."
+          content={t("contactPage.seo.description")}
         />
         <link rel="canonical" href={absoluteUrl("/contact")} />
-        <meta property="og:title" content="Contact – X&C Botnari" />
+        <meta property="og:title" content={t("contactPage.seo.ogTitle")} />
         <meta
           property="og:description"
-          content="Solicită o ofertă pentru sisteme fotovoltaice și stocare energie în Moldova."
+          content={t("contactPage.seo.ogDescription")}
         />
         <meta property="og:url" content={absoluteUrl("/contact")} />
         <meta property="og:type" content="website" />
@@ -140,15 +193,13 @@ const Contact = () => {
           >
             <span className="premium-badge mb-6 inline-flex">
               <Mail className="w-4 h-4" />
-              Contact
+              {t("contactPage.heroBadge")}
             </span>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-              Hai să construim sistemul tău energetic{" "}
-              <span className="text-gradient-accent">perfect</span>
+              {t("contactPage.heroTitle")}
             </h1>
             <p className="text-xl text-muted-foreground">
-              Suntem aici să răspundem la toate întrebările tale și să îți oferim 
-              cea mai bună soluție pentru nevoile tale energetice.
+              {t("contactPage.heroSubtitle")}
             </p>
           </motion.div>
         </div>
@@ -168,11 +219,10 @@ const Contact = () => {
             >
               <div>
                 <h2 className="font-display text-3xl font-bold mb-4">
-                  Informații de Contact
+                  {t("contactPage.infoTitle")}
                 </h2>
                 <p className="text-muted-foreground">
-                  Alege modalitatea preferată de comunicare. Suntem mereu disponibili 
-                  să te ajutăm.
+                  {t("contactPage.infoSubtitle")}
                 </p>
               </div>
 
@@ -181,8 +231,8 @@ const Contact = () => {
                   <motion.a
                     key={item.label}
                     href={item.href}
-                    target={item.label === "Adresă" ? "_blank" : undefined}
-                    rel={item.label === "Adresă" ? "noopener noreferrer" : undefined}
+                    target={item.icon === MapPin ? "_blank" : undefined}
+                    rel={item.icon === MapPin ? "noopener noreferrer" : undefined}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -205,7 +255,7 @@ const Contact = () => {
 
               {/* Benefits */}
               <div className="glass-card p-6">
-                <h3 className="font-semibold mb-4">De ce să ne contactezi?</h3>
+                <h3 className="font-semibold mb-4">{t("contactPage.whyContact")}</h3>
                 <ul className="space-y-3">
                   {benefits.map((benefit) => (
                     <li key={benefit} className="flex items-center gap-3">
@@ -227,7 +277,7 @@ const Contact = () => {
             >
               <div className="glass-card p-8 md:p-10">
                 <h2 className="font-display text-2xl font-bold mb-6">
-                  Solicită o Ofertă Personalizată
+                  {t("contactPage.formTitle")}
                 </h2>
 
                 {isSubmitted ? (
@@ -240,16 +290,16 @@ const Contact = () => {
                       <CheckCircle2 className="w-10 h-10 text-energy" />
                     </div>
                     <h3 className="font-display text-2xl font-bold mb-3">
-                      Mesaj trimis cu succes!
+                      {t("contactPage.successTitle")}
                     </h3>
                     <p className="text-muted-foreground mb-6">
-                      Îți mulțumim pentru interes. Te vom contacta în cel mai scurt timp posibil.
+                      {t("contactPage.successDesc")}
                     </p>
                     <button
                       onClick={() => setIsSubmitted(false)}
                       className="text-primary font-semibold hover:underline"
                     >
-                      Trimite alt mesaj
+                      {t("contactPage.sendAnother")}
                     </button>
                   </motion.div>
                 ) : (
@@ -267,7 +317,7 @@ const Contact = () => {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium mb-2">
-                          Nume complet *
+                          {t("contactPage.fullName")} *
                         </label>
                         <input
                           type="text"
@@ -276,12 +326,12 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           className="input-premium"
-                          placeholder="Ion Popescu"
+                          placeholder={t("contactPage.placeholders.fullName")}
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2">
-                          Telefon *
+                          {t("contactPage.phone")} *
                         </label>
                         <input
                           type="tel"
@@ -290,14 +340,14 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           className="input-premium"
-                          placeholder="+373 60 000 000"
+                          placeholder={t("contactPage.placeholders.phone")}
                         />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium mb-2">
-                        Email
+                        {t("contactPage.email")}
                       </label>
                       <input
                         type="email"
@@ -305,13 +355,13 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         className="input-premium"
-                        placeholder="email@exemplu.md"
+                        placeholder={t("contactPage.placeholders.email")}
                       />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium mb-2">
-                        Tip sistem interesat
+                        {t("contactPage.systemType")}
                       </label>
                       <select
                         name="systemType"
@@ -319,17 +369,105 @@ const Contact = () => {
                         onChange={handleChange}
                         className="input-premium"
                       >
-                        <option value="">Selectează tipul de sistem</option>
-                        <option value="on-grid">On-Grid</option>
-                        <option value="off-grid">Off-Grid</option>
-                        <option value="hybrid">Hybrid</option>
-                        <option value="nu-stiu">Nu știu încă</option>
+                        <option value="">{t("contactPage.form.systemPlaceholder")}</option>
+                        <option value="on-grid">{t("pricing.onGrid")}</option>
+                        <option value="off-grid">{t("pricing.offGrid")}</option>
+                        <option value="hybrid">{t("pricing.hybrid")}</option>
+                        <option value="nu-stiu">{t("contactPage.form.systemUnknown")}</option>
                       </select>
                     </div>
 
+                    {(formData.systemType || formData.kw || formData.batteryKwh || formData.mounting || formData.estimatedPriceEur) && (
+                      <div className="rounded-2xl border border-border/60 bg-secondary/30 p-4">
+                        <p className="text-sm font-medium">{t("contactPage.summaryTitle")}</p>
+                        <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-muted-foreground">
+                          {formData.systemType && (
+                            <div>
+                              <span className="font-medium text-foreground">{t("contactPage.summarySystem")}:</span> {systemLabel(formData.systemType)}
+                            </div>
+                          )}
+                          {formData.kw && (
+                            <div>
+                              <span className="font-medium text-foreground">{t("contactPage.summaryPower")}:</span> {formData.kw} kW
+                            </div>
+                          )}
+                          {formData.mounting && (
+                            <div>
+                              <span className="font-medium text-foreground">{t("contactPage.summaryMount")}:</span> {formData.mounting}
+                            </div>
+                          )}
+                          {(formData.systemType === "hybrid" || formData.systemType === "off-grid") && formData.batteryKwh && (
+                            <div>
+                              <span className="font-medium text-foreground">{t("contactPage.summaryBattery")}:</span> {formData.batteryKwh} kWh
+                            </div>
+                          )}
+                          {formData.estimatedPriceEur && (
+                            <div className="md:col-span-2">
+                              <span className="font-medium text-foreground">{t("contactPage.summaryEstimate")}:</span>{" "}
+                              {formData.estimatedPriceEur} EUR <span className="text-xs">({t("contactPage.summaryApprox")})</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium mb-2">{t("contactPage.form.powerLabel")}</label>
+                        <input
+                          type="number"
+                          name="kw"
+                          value={formData.kw}
+                          onChange={handleChange}
+                          className="input-premium"
+                          placeholder={t("contactPage.placeholders.power")}
+                          min={1}
+                          step={1}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">{t("contactPage.form.mountLabel")}</label>
+                        <select
+                          name="mounting"
+                          value={formData.mounting}
+                          onChange={handleChange}
+                          className="input-premium"
+                        >
+                          <option value="">{t("common.choose")}</option>
+                          <option value="acoperiș">{t("contactPage.form.mountRoof")}</option>
+                          <option value="carcasă (la sol)">{t("contactPage.form.mountGround")}</option>
+                        </select>
+                        <p className="mt-2 text-xs text-muted-foreground">
+                          {t("contactPage.mountHint")}
+                        </p>
+                      </div>
+                    </div>
+
+                    {(formData.systemType === "hybrid" || formData.systemType === "off-grid") && (
+                      <div>
+                        <label className="block text-sm font-medium mb-2">{t("contactPage.form.batteryLabel")}</label>
+                        <select
+                          name="batteryKwh"
+                          value={formData.batteryKwh}
+                          onChange={handleChange}
+                          className="input-premium"
+                        >
+                          <option value="">{t("contactPage.form.batteryPlaceholder")}</option>
+                          <option value="5">5</option>
+                          <option value="10.5">10.5</option>
+                          <option value="16">16</option>
+                          <option value="23.5">23.5</option>
+                          <option value="">{t("contactPage.form.batteryOther")}</option>
+                        </select>
+                        <p className="mt-2 text-xs text-muted-foreground">
+                          {t("contactPage.batteryHint")}
+                        </p>
+                      </div>
+                    )}
+
                     <div>
                       <label className="block text-sm font-medium mb-2">
-                        Mesaj
+                        {t("contactPage.message")}
                       </label>
                       <textarea
                         name="message"
@@ -337,7 +475,7 @@ const Contact = () => {
                         onChange={handleChange}
                         rows={4}
                         className="input-premium resize-none"
-                        placeholder="Descrie pe scurt nevoile tale sau întrebările pe care le ai..."
+                        placeholder={t("contactPage.placeholders.message")}
                       />
                     </div>
 
@@ -349,18 +487,18 @@ const Contact = () => {
                       {isSubmitting ? (
                         <>
                           <div className="w-5 h-5 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
-                          Se trimite...
+                          {t("contactPage.submitting")}
                         </>
                       ) : (
                         <>
-                          Trimite solicitarea
+                          {t("contactPage.submit")}
                           <Send className="w-5 h-5" />
                         </>
                       )}
                     </button>
 
                     <p className="text-sm text-muted-foreground text-center">
-                      Prin trimiterea formularului, ești de acord cu politica noastră de confidențialitate.
+                      {t("contactPage.privacy")}
                     </p>
                   </form>
                 )}
@@ -382,10 +520,10 @@ const Contact = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Ne găsești în Chișinău
+              {t("contactPage.mapTitle")}
             </h2>
             <p className="text-muted-foreground">
-              Vizitează-ne la sediu pentru o consultare față în față
+              {t("contactPage.mapSubtitle")}
             </p>
           </motion.div>
 

@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { useTranslation } from "react-i18next";
 import { 
   ArrowRight, 
   Award, 
@@ -22,6 +23,7 @@ import pvSystemImage from "@/assets/installation-work.jpg";
 import { absoluteUrl } from "@/lib/seo";
 
 const Index = () => {
+  const { t } = useTranslation();
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -33,67 +35,60 @@ const Index = () => {
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   const badges = [
-    { icon: Award, text: "Importator exclusiv Felicity în Moldova" },
-    { icon: TrendingUp, text: "#1 în 2025 – cele mai multe stații instalate" },
-    { icon: Shield, text: "Garanție extinsă și suport premium" },
+    { icon: Award, text: t("homePage.badges.exclusiveImporter") },
+    { icon: TrendingUp, text: t("homePage.badges.numberOne") },
+    { icon: Shield, text: t("homePage.badges.extendedWarranty") },
   ];
 
   const solutions = [
     {
+      key: "onGrid",
       icon: Grid3X3,
-      title: "On-Grid",
-      subtitle: "Economii maxime",
-      description: "Conectat la rețeaua electrică pentru economii semnificative la facturi.",
-      color: "primary",
+      color: "primary" as const,
       href: "/sisteme#on-grid",
     },
     {
+      key: "offGrid",
       icon: Battery,
-      title: "Off-Grid",
-      subtitle: "Independență totală",
-      description: "Complet independent de rețea, ideal pentru zone izolate.",
-      color: "accent",
+      color: "accent" as const,
       href: "/sisteme#off-grid",
     },
     {
+      key: "hybrid",
       icon: Zap,
-      title: "Hybrid",
-      subtitle: "Control absolut",
-      description: "Combinația perfectă între economii și independență energetică.",
-      color: "energy",
+      color: "energy" as const,
       href: "/sisteme#hybrid",
     },
-  ];
+  ].map((solution) => ({
+    ...solution,
+    title: t(`homePage.solutions.${solution.key}.title`),
+    subtitle: t(`homePage.solutions.${solution.key}.subtitle`),
+    description: t(`homePage.solutions.${solution.key}.description`),
+  }));
 
   const stats = [
-    { value: 850, suffix: "+", label: "Stații instalate" },
-    { value: 12, suffix: " MW", label: "Putere totală montată" },
-    { value: 8, suffix: " ani", label: "Experiență în domeniu" },
-    { value: 100, suffix: "%", label: "Clienți mulțumiți" },
+    { value: 850, suffix: "+", label: t("homePage.stats.installedStations") },
+    { value: 12, suffix: " MW", label: t("homePage.stats.totalPower") },
+    { value: 8, suffix: ` ${t("homePage.stats.yearsSuffix")}`, label: t("homePage.stats.experience") },
+    { value: 100, suffix: "%", label: t("homePage.stats.happyClients") },
   ];
 
-  const whyUsReasons = [
-    "Lider de piață în Moldova",
-    "Echipamente premium certificate",
-    "Echipă de instalatori experimentați",
-    "Garanție extinsă pe toate produsele",
-    "Suport tehnic 24/7",
-    "Prețuri competitive fără compromis",
-  ];
+  const whyUsReasonsRaw = t("homePage.whyUs.reasons", { returnObjects: true }) as unknown;
+  const whyUsReasons = Array.isArray(whyUsReasonsRaw) ? (whyUsReasonsRaw as string[]) : [];
 
   return (
     <Layout>
       <Helmet>
-        <title>Panouri fotovoltaice în Moldova | Instalare stații solare – X&amp;C Botnari</title>
+        <title>{t("homePage.seo.title")}</title>
         <meta
           name="description"
-          content="Instalare sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova. Consultare, proiectare și montaj complet. Importator Felicity, garanție și suport premium."
+          content={t("homePage.seo.description")}
         />
         <link rel="canonical" href={absoluteUrl("/")} />
-        <meta property="og:title" content="Panouri fotovoltaice în Moldova – X&C Botnari" />
+        <meta property="og:title" content={t("homePage.seo.ogTitle")} />
         <meta
           property="og:description"
-          content="Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid. Consultare, proiectare și instalare în Moldova."
+          content={t("homePage.seo.ogDescription")}
         />
         <meta property="og:url" content={absoluteUrl("/")} />
         <meta property="og:type" content="website" />
@@ -109,18 +104,18 @@ const Index = () => {
             telephone: "+37378901362",
             address: {
               "@type": "PostalAddress",
-              addressLocality: "Chișinău",
+              addressLocality: t("homePage.schema.addressLocality"),
               addressCountry: "MD",
             },
             areaServed: "Moldova",
             sameAs: ["https://wa.me/37378901362"],
             makesOffer: {
               "@type": "OfferCatalog",
-              name: "Sisteme fotovoltaice",
+              name: t("homePage.schema.offerCatalogName"),
               itemListElement: [
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instalare sisteme On-Grid" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instalare sisteme Off-Grid" } },
-                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instalare sisteme Hybrid" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: t("homePage.schema.offerOnGrid") } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: t("homePage.schema.offerOffGrid") } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: t("homePage.schema.offerHybrid") } },
               ],
             },
           })}
@@ -200,8 +195,8 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] mb-6 text-foreground drop-shadow-[0_2px_18px_rgba(255,255,255,0.9)]"
             >
-              Energia viitorului,{" "}
-              <span className="text-gradient-primary drop-shadow-[0_2px_18px_rgba(255,255,255,0.9)]">instalată la perfecție.</span>
+              {t("homePage.hero.title")}{" "}
+              <span className="text-gradient-primary drop-shadow-[0_2px_18px_rgba(255,255,255,0.9)]">{t("homePage.hero.titleHighlight")}</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -211,9 +206,9 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl drop-shadow-[0_2px_16px_rgba(255,255,255,0.85)]"
             >
-              Stații fotovoltaice On-Grid, Off-Grid și Hybrid – 6kW, 10kW, 15kW+
+              {t("homePage.hero.subtitleLine1")}
               <br />
-              <span className="text-primary font-semibold">X&C Botnari SRL</span> – Liderul pieței din Moldova.
+              <span className="text-primary font-semibold">X&C Botnari SRL</span> {t("homePage.hero.subtitleLine2")}
             </motion.p>
 
             {/* CTAs */}
@@ -224,11 +219,11 @@ const Index = () => {
               className="flex flex-wrap gap-4"
             >
               <Link to="/contact" className="btn-premium-accent flex items-center gap-2 group">
-                Cere o ofertă personalizată
+                {t("homePage.hero.ctaPrimary")}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link to="/contact" className="btn-premium-outline flex items-center gap-2">
-                Programează o consultare
+                {t("homePage.hero.ctaSecondary")}
               </Link>
             </motion.div>
           </div>
@@ -259,13 +254,13 @@ const Index = () => {
       <section className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-6">
           <SectionTitle
-            badge="Soluții Complete"
+            badge={t("homePage.solutionsSection.badge")}
             title={
               <>
-                Tipuri de <span className="text-gradient-primary">Sisteme</span>
+                {t("homePage.solutionsSection.title")} <span className="text-gradient-primary">{t("homePage.solutionsSection.titleHighlight")}</span>
               </>
             }
-            description="Fiecare proiect este unic. Oferim soluții personalizate pentru nevoile tale energetice."
+            description={t("homePage.solutionsSection.description")}
           />
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -306,7 +301,7 @@ const Index = () => {
                       {solution.description}
                     </p>
                     <div className="mt-6 flex items-center gap-2 text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                      <span>Află mai multe</span>
+                      <span>{t("common.learnMore")}</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
@@ -354,16 +349,14 @@ const Index = () => {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 mb-6">
                 <Leaf className="w-4 h-4" />
-                De ce noi?
+                {t("homePage.whyUs.badge")}
               </span>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Nu instalăm doar panouri.{" "}
-                <span className="text-gradient-primary">Proiectăm și implementăm soluții complete.</span>
+                {t("homePage.whyUs.title")}{" "}
+                <span className="text-gradient-primary">{t("homePage.whyUs.titleHighlight")}</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Cu peste 8 ani de experiență și sute de proiecte finalizate, 
-                X&C Botnari SRL este alegerea clară pentru cei care doresc 
-                calitate fără compromis.
+                {t("homePage.whyUs.description")}
               </p>
 
               <ul className="space-y-4 mb-8">
@@ -388,7 +381,7 @@ const Index = () => {
                 to="/proiecte"
                 className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
               >
-                <span>Vezi proiectele noastre</span>
+                <span>{t("homePage.whyUs.linkProjects")}</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </motion.div>
@@ -403,7 +396,7 @@ const Index = () => {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src={pvSystemImage}
-                  alt="Sistem fotovoltaic premium"
+                  alt={t("homePage.whyUs.imageAlt")}
                   className="w-full h-[500px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
@@ -414,8 +407,8 @@ const Index = () => {
                         <Battery className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div>
-                        <p className="text-foreground font-semibold">Baterii Felicity</p>
-                        <p className="text-muted-foreground text-sm">Importator exclusiv Moldova</p>
+                        <p className="text-foreground font-semibold">{t("homePage.whyUs.overlayTitle")}</p>
+                        <p className="text-muted-foreground text-sm">{t("homePage.whyUs.overlaySubtitle")}</p>
                       </div>
                     </div>
                   </div>
@@ -436,7 +429,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="text-3xl font-bold text-foreground">12 MW</p>
-                    <p className="text-sm text-muted-foreground">Putere instalată</p>
+                    <p className="text-sm text-muted-foreground">{t("homePage.whyUs.floatingStat")}</p>
                   </div>
                 </div>
               </motion.div>
@@ -462,20 +455,19 @@ const Index = () => {
             className="max-w-4xl mx-auto text-center"
           >
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Alege liderul.{" "}
-              <span className="text-gradient-accent">Alege siguranța.</span>
+              {t("homePage.finalCta.title")}{" "}
+              <span className="text-gradient-accent">{t("homePage.finalCta.titleHighlight")}</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Fiecare zi fără energie solară este o zi în care plătești mai mult. 
-              Hai să schimbăm asta împreună.
+              {t("homePage.finalCta.subtitle")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact" className="btn-premium-accent flex items-center gap-2 group">
-                Începe acum
+                {t("homePage.finalCta.primary")}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link to="/felicity" className="btn-premium-outline flex items-center gap-2">
-                Descoperă Felicity
+                {t("homePage.finalCta.secondary")}
               </Link>
             </div>
           </motion.div>
