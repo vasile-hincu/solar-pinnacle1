@@ -31,7 +31,9 @@ const Index = () => {
   });
 
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  // Keep hero content visible longer (especially on small screens).
+  // Opacity stays at 1 until ~75% of the hero scroll, then fades out.
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.75, 1], [1, 1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   const badges = [
