@@ -374,52 +374,6 @@ const Felicity = () => {
         </div>
       </section>
 
-      {/* HIGH VOLTAGE BATTERIES */}
-      <section id="tensiune-inalta" className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-        <div className="container mx-auto px-6 relative z-10">
-          <SectionTitle
-            badge={t("felicityPage.highVoltage.badge")}
-            title={t("felicityPage.highVoltage.title")}
-            description={t("felicityPage.highVoltage.description")}
-          />
-
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div className="space-y-6">
-              {(() => {
-                const items = t("felicityPage.highVoltage.items", { returnObjects: true }) as unknown;
-                if (!Array.isArray(items)) return null;
-
-                return items
-                  .filter((item): item is { title: string; description: string } =>
-                    typeof item === "object" && item !== null && "title" in item && "description" in item
-                  )
-                  .map((item) => (
-                    <div key={item.title} className="flex gap-4">
-                      <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
-                        <CheckCircle2 className="h-5 w-5" />
-                      </span>
-                      <div>
-                        <p className="font-semibold text-foreground">{item.title}</p>
-                        <p className="text-muted-foreground text-sm">{item.description}</p>
-                      </div>
-                    </div>
-                  ));
-              })()}
-            </div>
-
-            <div className="rounded-3xl overflow-hidden shadow-lg">
-              <img
-                src="https://via.placeholder.com/800x500?text=High+Voltage+Battery"
-                alt={t("felicityPage.highVoltage.imageAlt")}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* INVERTERS */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0">
