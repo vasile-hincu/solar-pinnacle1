@@ -509,7 +509,7 @@
         "idealFor": "Case mici, apartamente",
         "features": ["LiFePO4", "BMS integrat", "Montaj perete", "LCD display"]
       },
-      "10_5": {
+      "11_7": {
         "idealFor": "Case medii, birouri mici",
         "features": ["LiFePO4", "BMS avansat", "Scalabil", "Smart monitoring"]
       },
@@ -521,6 +521,26 @@
         "idealFor": "Rezidențial premium, comercial",
         "features": ["LiFePO4", "Max capacity", "Enterprise ready", "Remote management"]
       }
+    },
+    "highVoltage": {
+      "badge": "Tensiune înaltă",
+      "title": "Baterii de tensiune înaltă",
+      "description": "Soluții cu voltaj mai mare pentru sisteme industriale și stocare avansată. Ideal pentru eficiență maximă și compatibilitate cu invertoare high-voltage.",
+      "items": {
+        "compatibility": {
+          "title": "Compatibilitate extinsă",
+          "description": "Conectează la invertoare și sisteme care acceptă tensiuni de 400–600V pentru performanță maximă."
+        },
+        "efficiency": {
+          "title": "Eficiență crescută",
+          "description": "Reducerea pierderilor și o arhitectură internă optimizată pentru ciclu de viață lung."
+        },
+        "scalability": {
+          "title": "Scalabilitate simplificată",
+          "description": "Adaugă module de baterii pentru a crește capacitatea fără a crește considerabil pierderile."
+        }
+      },
+      "imageAlt": "Baterie de tensiune înaltă Felicity"
     },
     "inverters": {
       "badge": "Invertoare Premium",

@@ -454,7 +454,7 @@ const Contact = () => {
                         >
                           <option value="">{t("contactPage.form.batteryPlaceholder")}</option>
                           <option value="5">5</option>
-                          <option value="10.5">10.5</option>
+                          <option value="11.7">11.7</option>
                           <option value="16">16</option>
                           <option value="23.5">23.5</option>
                           <option value="">{t("contactPage.form.batteryOther")}</option>

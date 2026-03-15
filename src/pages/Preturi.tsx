@@ -79,7 +79,7 @@ const getOnGridPriceEur = (kw: number) => {
 const batteryPriceEur: Record<string, number> = {
   // Felicity (orientativ) – ajustabil
   "5": 1500,
-  "10.5": 3000,
+  "11.7": 3000,
   "16": 3500,
   "23.5": 4300,
 };
@@ -87,7 +87,7 @@ const batteryPriceEur: Record<string, number> = {
 const getHybridBaseEur = (kw: number) => {
   // Calibrat după exemplele tale:
   // 6kW + 5kWh = 6000€  => baza(6)=4500€
-  // 10kW + 10.5kWh = 11500€ => baza(10)=8500€
+  // 10kW + 11.7kWh = 11500€ => baza(10)=8500€
   return 1000 * kw - 1500;
 };
 
@@ -95,7 +95,7 @@ const OFFGRID_PREMIUM_EUR = 0;
 
 const hybridFixedPrices: Array<{ kw: number; batteryKwh: number; priceEur: number }> = [
   { kw: 6, batteryKwh: 5, priceEur: 6000 },
-  { kw: 10, batteryKwh: 10.5, priceEur: 11500 },
+  { kw: 10, batteryKwh: 11.7, priceEur: 11500 },
   { kw: 10, batteryKwh: 16, priceEur: 12000 },
 ];
 
@@ -109,7 +109,7 @@ const Preturi = () => {
   const [system, setSystem] = useState<SystemType>("hybrid");
   const [kw, setKw] = useState<number>(8);
   const [mounting, setMounting] = useState<MountingType>("acoperis");
-  const [batteryKwh, setBatteryKwh] = useState<string>("10.5");
+  const [batteryKwh, setBatteryKwh] = useState<string>("11.7");
 
   const kwLimits = useMemo(() => {
     if (system === "on-grid") return { min: pricingModel.onGrid.minKw, max: pricingModel.onGrid.maxKw };
@@ -250,7 +250,7 @@ const Preturi = () => {
                   if (next === "on-grid") setKw((prev) => clamp(prev, pricingModel.onGrid.minKw, pricingModel.onGrid.maxKw));
                   if (next === "hybrid") {
                     setKw((prev) => clamp(prev, 3, 20));
-                    setBatteryKwh((prev) => prev || "10.5");
+                    setBatteryKwh((prev) => prev || "11.7");
                   }
                   if (next === "off-grid") {
                     setKw((prev) => clamp(prev, 2, 20));
@@ -347,7 +347,7 @@ const Preturi = () => {
                               </SelectTrigger>
                               <SelectContent>
                                 <SelectItem value="5">5 kWh</SelectItem>
-                                <SelectItem value="10.5">10.5 kWh</SelectItem>
+                                <SelectItem value="11.7">11.7 kWh</SelectItem>
                                 <SelectItem value="16">16 kWh</SelectItem>
                                 <SelectItem value="23.5">23.5 kWh</SelectItem>
                               </SelectContent>
