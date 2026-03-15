@@ -386,21 +386,26 @@ const Felicity = () => {
 
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div className="space-y-6">
-              {(
-                t("felicityPage.highVoltage.items", { returnObjects: true }) as unknown
-              )
-                .filter((item): item is { title: string; description: string } => typeof item === "object" && item !== null)
-                .map((item) => (
-                  <div key={item.title} className="flex gap-4">
-                    <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
-                      <CheckCircle2 className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="font-semibold text-foreground">{item.title}</p>
-                      <p className="text-muted-foreground text-sm">{item.description}</p>
+              {(() => {
+                const items = t("felicityPage.highVoltage.items", { returnObjects: true }) as unknown;
+                if (!Array.isArray(items)) return null;
+
+                return items
+                  .filter((item): item is { title: string; description: string } =>
+                    typeof item === "object" && item !== null && "title" in item && "description" in item
+                  )
+                  .map((item) => (
+                    <div key={item.title} className="flex gap-4">
+                      <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
+                        <CheckCircle2 className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <p className="font-semibold text-foreground">{item.title}</p>
+                        <p className="text-muted-foreground text-sm">{item.description}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ));
+              })()}
             </div>
 
             <div className="rounded-3xl overflow-hidden shadow-lg">
