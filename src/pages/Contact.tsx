@@ -133,8 +133,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: t("contactPage.contactInfo.email.label"),
-      value: "contact@xcbotnari.md",
-      href: "mailto:contact@xcbotnari.md",
+      value: "xcbotnari@gmail.com",
+      href: "mailto:xcbotnari@gmail.com",
       description: t("contactPage.contactInfo.email.description"),
     },
     {
