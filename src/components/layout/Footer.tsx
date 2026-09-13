@@ -117,10 +117,10 @@ export const Footer = () => {
                 <div>
                   <p className="text-sm text-muted-foreground">{t("footer.emailLabel")}</p>
                   <a
-                    href="mailto:contact@xcbotnari.md"
+                    href="mailto:xcbotnari@gmail.com"
                     className="text-foreground hover:text-primary transition-colors"
                   >
-                    contact@xcbotnari.md
+                    xcbotnari@gmail.com
                   </a>
                 </div>
               </li>
