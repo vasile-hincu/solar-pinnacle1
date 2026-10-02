@@ -68,6 +68,27 @@ const Index = () => {
     description: t(`homePage.solutions.${solution.key}.description`),
   }));
 
+  const highVoltageSystems = [
+    {
+      capacity: "20.48",
+      moduleCount: 4,
+      voltage: "204.8",
+      image: "/felicity-hv-20-48.png",
+    },
+    {
+      capacity: "40.96",
+      moduleCount: 8,
+      voltage: "409.6",
+      image: "/felicity-hv-40-96.png",
+    },
+    {
+      capacity: "61.44",
+      moduleCount: 12,
+      voltage: "614.4",
+      image: "/felicity-hv-61-44.png",
+    },
+  ];
+
   const stats = [
     { value: 850, suffix: "+", label: t("homePage.stats.installedStations") },
     { value: 12, suffix: " MW", label: t("homePage.stats.totalPower") },
@@ -94,13 +115,14 @@ const Index = () => {
         />
         <meta property="og:url" content={absoluteUrl("/")} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+        <meta property="og:image" content={absoluteUrl("/favicon.png")} />
 
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "X&C Botnari SRL",
+            name: "Botnari Energy Group SRL",
+            logo: absoluteUrl("/favicon.png"),
             url: absoluteUrl("/"),
             email: "contact@xcbotnari.md",
             telephone: "+37378901362",
@@ -210,7 +232,7 @@ const Index = () => {
             >
               {t("homePage.hero.subtitleLine1")}
               <br />
-              <span className="text-primary font-semibold">X&C Botnari SRL</span> {t("homePage.hero.subtitleLine2")}
+              <span className="text-primary font-semibold">Botnari Energy Group SRL</span> {t("homePage.hero.subtitleLine2")}
             </motion.p>
 
             {/* CTAs */}
@@ -314,6 +336,89 @@ const Index = () => {
         </div>
       </section>
 
+      {/* HIGH VOLTAGE BATTERIES */}
+      <section className="py-24 md:py-28 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <SectionTitle
+            badge={t("homePage.highVoltage.badge")}
+            title={
+              <>
+                {t("homePage.highVoltage.title")} {" "}
+                <span className="text-gradient-accent">
+                  {t("homePage.highVoltage.titleHighlight")}
+                </span>
+              </>
+            }
+            description={t("homePage.highVoltage.description")}
+          />
+
+          <p className="max-w-3xl mx-auto text-center text-muted-foreground mb-10">
+            {t("homePage.highVoltage.systemSummary")}
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {highVoltageSystems.map((system, index) => (
+              <motion.article
+                key={system.capacity}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="glass-card overflow-hidden rounded-2xl"
+              >
+                <div className="h-60 bg-white p-3">
+                  <img
+                    src={system.image}
+                    alt={`${system.capacity} kWh Felicity FLH48100UG1`}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="font-display text-4xl font-bold">
+                      {system.capacity}
+                    </span>
+                    <span className="text-lg text-muted-foreground">kWh</span>
+                  </div>
+                  <h3 className="font-semibold mb-4">FLH48100UG1</h3>
+                  <div className="space-y-3 border-t border-border pt-4 text-sm">
+                    <div className="flex justify-between gap-3">
+                      <span className="text-muted-foreground">
+                        {t("homePage.highVoltage.modulesLabel")}
+                      </span>
+                      <span className="font-medium text-right">
+                        {system.moduleCount} × FLH48100UMG1
+                      </span>
+                    </div>
+                    <div className="flex justify-between gap-3">
+                      <span className="text-muted-foreground">
+                        {t("homePage.highVoltage.voltageLabel")}
+                      </span>
+                      <span className="font-medium">{system.voltage} V</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-5">
+            <p className="text-sm text-muted-foreground text-center">
+              {t("homePage.highVoltage.controllerLabel")}: {" "}
+              <span className="font-semibold text-foreground">FLH48100UCG1</span>
+            </p>
+            <Link
+              to="/felicity"
+              className="btn-premium-accent inline-flex items-center gap-2 group"
+            >
+              {t("homePage.highVoltage.cta")}
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* STATS SECTION */}
       <section className="py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
@@ -338,7 +443,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* WHY X&C BOTNARI SECTION */}
+      {/* WHY BOTNARI ENERGY GROUP SECTION */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         <div className="container mx-auto px-6 relative z-10">

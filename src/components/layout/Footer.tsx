@@ -13,17 +13,14 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3">
-              <img 
-                src="/logo.png"
-                alt={`X&C Botnari - ${t("common.brandTagline")}`}
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.src = "/logo.svg";
-                }}
+              <img
+                src="/logo2.png"
+                alt={`Botnari Energy Group - ${t("common.brandTagline")}`}
+                className="h-12 w-auto scale-125 object-contain"
               />
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg leading-tight">
-                  X&C Botnari
+                  Botnari Energy Group
                 </span>
                 <span className="text-[10px] text-muted-foreground tracking-wide">
                   {t("common.brandTagline")}
@@ -141,7 +138,7 @@ export const Footer = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} X&C Botnari SRL. {t("footer.copyright")}
+            © {new Date().getFullYear()} Botnari Energy Group SRL. {t("footer.copyright")}
           </p>
           <p className="text-sm text-muted-foreground">
             {t("footer.officialImporter")} <span className="text-accent font-medium">Felicity</span> {t("footer.importerSuffix")}

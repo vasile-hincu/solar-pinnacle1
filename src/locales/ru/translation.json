@@ -49,9 +49,9 @@
   },
   "pricing": {
     "seo": {
-      "title": "Цены | Солнечные системы On-Grid, Hybrid, Off-Grid – X&C Botnari",
+      "title": "Цены | Солнечные системы On-Grid, Hybrid, Off-Grid – Botnari Energy Group",
       "description": "Ориентировочные цены на солнечные системы On-Grid, Hybrid и Off-Grid в Молдове. Выберите мощность (кВт) и запросите персональное предложение.",
-      "ogTitle": "Цены – X&C Botnari",
+      "ogTitle": "Цены – Botnari Energy Group",
       "ogDescription": "Ориентировочные цены и конфигуратор по кВт. Hybrid — самый популярный вариант с батареями Felicity."
     },
     "badge": "Цены в EUR • под ключ (консультация → ввод в эксплуатацию)",
@@ -177,9 +177,9 @@
   },
   "contactPage": {
     "seo": {
-      "title": "Контакты | Предложение на солнечную систему в Молдове – X&C Botnari",
+      "title": "Контакты | Предложение на солнечную систему в Молдове – Botnari Energy Group",
       "description": "Запросите персональное предложение по солнечным панелям, батареям и инвертору. Быстро ответим с рекомендациями и оценкой стоимости для Молдовы.",
-      "ogTitle": "Контакты – X&C Botnari",
+      "ogTitle": "Контакты – Botnari Energy Group",
       "ogDescription": "Запросите предложение на солнечные системы и накопление энергии в Молдове."
     },
     "errors": {
@@ -253,9 +253,9 @@
   },
   "projectsPage": {
     "seo": {
-      "title": "Реализованные солнечные проекты в Молдове | X&C Botnari",
+      "title": "Реализованные солнечные проекты в Молдове | Botnari Energy Group",
       "description": "Посмотрите реальные проекты солнечных систем, установленных в Молдове (On-Grid, Off-Grid, Hybrid) и результаты: экономия, автономия и резерв.",
-      "ogTitle": "Солнечные проекты – X&C Botnari",
+      "ogTitle": "Солнечные проекты – Botnari Energy Group",
       "ogDescription": "Примеры установленных систем и реальные результаты для дома и бизнеса."
     },
     "hero": {
@@ -282,7 +282,7 @@
     "cta": {
       "title": "Станьте нашим следующим",
       "titleHighlight": "успешным проектом",
-      "subtitle": "Присоединяйтесь к сотням довольных клиентов, которые выбрали X&C Botnari для перехода на солнечную энергию.",
+      "subtitle": "Присоединяйтесь к сотням довольных клиентов, которые выбрали Botnari Energy Group для перехода на солнечную энергию.",
       "button": "Начать свой проект"
     },
     "projects": {
@@ -332,9 +332,9 @@
   },
   "systemsPage": {
     "seo": {
-      "title": "Солнечные системы On-Grid, Off-Grid и Hybrid в Молдове | X&C Botnari",
+      "title": "Солнечные системы On-Grid, Off-Grid и Hybrid в Молдове | Botnari Energy Group",
       "description": "Выберите систему для дома или бизнеса: On-Grid для экономии, Off-Grid для автономии, Hybrid для резерва. Консультация и установка в Молдове.",
-      "ogTitle": "Солнечные системы в Молдове – X&C Botnari",
+      "ogTitle": "Солнечные системы в Молдове – Botnari Energy Group",
       "ogDescription": "On-Grid, Off-Grid и Hybrid: консультация, проектирование и монтаж солнечных систем в Молдове."
     },
     "hero": {
@@ -444,16 +444,16 @@
   },
   "felicityPage": {
     "seo": {
-      "title": "Батареи Felicity LiFePO4 и гибридные инверторы в Молдове | X&C Botnari",
+      "title": "Батареи Felicity LiFePO4 и гибридные инверторы в Молдове | Botnari Energy Group",
       "description": "Официальный импорт Felicity в Молдове: батареи LiFePO4, гибридные инверторы и решения для хранения энергии. Консультация, подбор и монтаж под ключ.",
-      "ogTitle": "Felicity в Молдове — батареи и инверторы | X&C Botnari",
+      "ogTitle": "Felicity в Молдове — батареи и инверторы | Botnari Energy Group",
       "ogDescription": "Батареи Felicity LiFePO4 и гибридные инверторы с поддержкой и гарантией в Молдове."
     },
     "hero": {
       "badgeTitle": "Эксклюзивные импортёры Felicity в Молдове",
-      "badgeSubtitle": "X&C Botnari SRL • официальный импорт • поддержка и гарантия",
+      "badgeSubtitle": "Botnari Energy Group SRL • официальный импорт • поддержка и гарантия",
       "title": "Технология, которая хранит будущее.",
-      "subtitle": "Премиальные батареи LiFePO4 и высокопроизводительные инверторы. X&C Botnari SRL — компания в Молдове с прямым доступом к линейке Felicity.",
+      "subtitle": "Премиальные батареи LiFePO4 и высокопроизводительные инверторы. Botnari Energy Group SRL — компания в Молдове с прямым доступом к линейке Felicity.",
       "ctaPrimary": "Консультация специалиста",
       "ctaSecondary": "Смотреть продукты",
       "floatingBadge": {
@@ -522,6 +522,24 @@
         "features": ["LiFePO4", "Макс. ёмкость", "Enterprise ready", "Удалённое управление"]
       }
     },
+    "highVoltage": {
+      "badge": "Высоковольтные батареи • FLH",
+      "title": "Системы хранения",
+      "titleHighlight": "High Voltage",
+      "description": "Высоковольтные системы Felicity LiFePO4 с конфигурацией от 20,48 до 61,44 кВт·ч.",
+      "systemImageAlt": "Высоковольтная система Felicity FLH с батарейными модулями и контроллером BMS в стойке",
+      "systemTitle": "Полная стойка с возможностью расширения",
+      "systemDescription": "Каждая система включает контроллер FLH48100UCG1 для управления стойкой и защитой, а также 4–12 модулей FLH48100UMG1. Параметры системы настраиваются с помощью сенсорного LCD-дисплея.",
+      "controllerLabel": "Контроллер и BMS",
+      "moduleLabel": "Модуль батареи",
+      "installationLabel": "Установка",
+      "installationValue": "Напольная стойка",
+      "moduleCountLabel": "Модули батареи",
+      "moduleCountSuffix": "модулей",
+      "nominalVoltageLabel": "Напряжение системы",
+      "requestQuote": "Запросить предложение",
+      "officialSpecs": "Официальные характеристики Felicity"
+    },
     "inverters": {
       "badge": "Премиальные инверторы",
       "title": "Мы работаем с",
@@ -547,9 +565,9 @@
   },
   "homePage": {
     "seo": {
-      "title": "Солнечные панели в Молдове | Установка солнечных станций – X&C Botnari",
+      "title": "Солнечные панели в Молдове | Установка солнечных станций – Botnari Energy Group",
       "description": "Установка солнечных систем On-Grid, Off-Grid и Hybrid в Молдове. Консультация, проектирование и монтаж под ключ. Импортёр Felicity, гарантия и премиальная поддержка.",
-      "ogTitle": "Солнечные панели в Молдове – X&C Botnari",
+      "ogTitle": "Солнечные панели в Молдове – Botnari Energy Group",
       "ogDescription": "Солнечные системы On-Grid, Off-Grid и Hybrid. Консультация, проектирование и установка в Молдове."
     },
     "schema": {
@@ -595,6 +613,17 @@
         "description": "Идеальный баланс экономии и энергетической независимости."
       }
     },
+    "highVoltage": {
+      "badge": "Высоковольтные батареи • FLH",
+      "title": "Хранение энергии",
+      "titleHighlight": "High Voltage",
+      "description": "Масштабируемые системы Felicity LiFePO4 ёмкостью от 20,48 до 61,44 кВт·ч.",
+      "systemSummary": "В каждую конфигурацию входят контроллер/BMS FLH48100UCG1 и модули FLH48100UMG1, установленные в напольную стойку.",
+      "modulesLabel": "Модули батареи",
+      "voltageLabel": "Напряжение системы",
+      "controllerLabel": "Контроллер и BMS",
+      "cta": "Смотреть батареи HV Felicity"
+    },
     "stats": {
       "installedStations": "Установленных станций",
       "totalPower": "Суммарная мощность",
@@ -606,7 +635,7 @@
       "badge": "Почему мы?",
       "title": "Мы не просто ставим панели.",
       "titleHighlight": "Мы проектируем и внедряем комплексные решения.",
-      "description": "Более 8 лет опыта и сотни завершённых проектов — X&C Botnari SRL очевидный выбор для тех, кто хочет качество без компромиссов.",
+      "description": "Более 8 лет опыта и сотни завершённых проектов — Botnari Energy Group SRL очевидный выбор для тех, кто хочет качество без компромиссов.",
       "reasons": [
         "Лидер рынка в Молдове",
         "Сертифицированное премиальное оборудование",
@@ -631,9 +660,9 @@
   },
   "notFound": {
     "seo": {
-      "title": "Страница не найдена (404) | X&C Botnari",
+      "title": "Страница не найдена (404) | Botnari Energy Group",
       "description": "Страница, которую вы ищете, не существует или была перемещена. Вернитесь на главную или свяжитесь с нами для помощи.",
-      "ogTitle": "404 – X&C Botnari",
+      "ogTitle": "404 – Botnari Energy Group",
       "ogDescription": "Запрошенная страница не найдена."
     },
     "title": "Упс! Страница не найдена",

@@ -1,4 +1,4 @@
-# X&C Botnari – Solar Energy
+# Botnari Energy Group – Solar Energy
 
 Website built with Vite + React + TypeScript + Tailwind (shadcn/ui).
 

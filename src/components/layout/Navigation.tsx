@@ -46,17 +46,14 @@ export const Navigation = () => {
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img 
-              src="/logo.png"
-              alt={`X&C Botnari - ${t("common.brandTagline")}`}
-              className="h-12 w-auto object-contain"
-              onError={(e) => {
-                e.currentTarget.src = "/logo.svg";
-              }}
+            <img
+              src="/logo2.png"
+              alt={`Botnari Energy Group - ${t("common.brandTagline")}`}
+              className="h-12 w-auto scale-125 object-contain"
             />
             <div className="flex flex-col">
               <span className="font-display font-bold text-lg leading-tight">
-                X&C Botnari
+                Botnari Energy Group
               </span>
               <span className="text-[10px] text-muted-foreground tracking-wide">
                 {t("common.brandTagline")}

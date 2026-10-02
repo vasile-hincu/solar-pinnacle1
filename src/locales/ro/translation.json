@@ -1,6 +1,6 @@
 {
   "common": {
-    "brandTagline": "Conectăm Soarele la Casa ta!",
+    "brandTagline": "Energia verde a viitorului",
     "requestQuote": "Cere Ofertă",
     "callNow": "Sună acum",
     "choose": "Alege",
@@ -49,9 +49,9 @@
   },
   "pricing": {
     "seo": {
-      "title": "Prețuri | Sisteme fotovoltaice On-Grid, Hybrid, Off-Grid – X&C Botnari",
+      "title": "Prețuri | Sisteme fotovoltaice On-Grid, Hybrid, Off-Grid – Botnari Energy Group",
       "description": "Vezi prețuri orientative pentru sisteme fotovoltaice On-Grid, Hybrid și Off-Grid în Moldova. Alege puterea (kW) și cere o ofertă personalizată.",
-      "ogTitle": "Prețuri – X&C Botnari",
+      "ogTitle": "Prețuri – Botnari Energy Group",
       "ogDescription": "Prețuri orientative și configurator în funcție de kW. Hybrid este cel mai popular, cu baterii Felicity."
     },
     "badge": "Prețuri în EUR • la cheie (consultanță → dare în exploatare)",
@@ -177,9 +177,9 @@
   },
   "contactPage": {
     "seo": {
-      "title": "Contact | Ofertă pentru sistem fotovoltaic în Moldova – X&C Botnari",
+      "title": "Contact | Ofertă pentru sistem fotovoltaic în Moldova – Botnari Energy Group",
       "description": "Cere o ofertă personalizată pentru panouri fotovoltaice, baterii și invertor. Îți răspundem rapid cu recomandări și estimare de cost pentru Moldova.",
-      "ogTitle": "Contact – X&C Botnari",
+      "ogTitle": "Contact – Botnari Energy Group",
       "ogDescription": "Solicită o ofertă pentru sisteme fotovoltaice și stocare energie în Moldova."
     },
     "errors": {
@@ -253,9 +253,9 @@
   },
   "projectsPage": {
     "seo": {
-      "title": "Proiecte fotovoltaice realizate în Moldova | X&C Botnari",
+      "title": "Proiecte fotovoltaice realizate în Moldova | Botnari Energy Group",
       "description": "Descoperă proiecte reale de sisteme fotovoltaice instalate în Moldova (On-Grid, Off-Grid, Hybrid) și rezultatele obținute: economii, autonomie și backup.",
-      "ogTitle": "Proiecte fotovoltaice – X&C Botnari",
+      "ogTitle": "Proiecte fotovoltaice – Botnari Energy Group",
       "ogDescription": "Exemple de sisteme instalate în Moldova și rezultate reale pentru case și afaceri."
     },
     "hero": {
@@ -282,7 +282,7 @@
     "cta": {
       "title": "Fii următorul nostru",
       "titleHighlight": "proiect de succes",
-      "subtitle": "Alătură-te sutelor de clienți mulțumiți care au ales X&C Botnari pentru tranziția lor la energia solară.",
+      "subtitle": "Alătură-te sutelor de clienți mulțumiți care au ales Botnari Energy Group pentru tranziția lor la energia solară.",
       "button": "Începe proiectul tău"
     },
     "projects": {
@@ -332,9 +332,9 @@
   },
   "systemsPage": {
     "seo": {
-      "title": "Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova | X&C Botnari",
+      "title": "Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova | Botnari Energy Group",
       "description": "Alege sistemul potrivit pentru casă sau afacere: On-Grid pentru economii, Off-Grid pentru autonomie, Hybrid pentru backup. Consultanță și instalare în Moldova.",
-      "ogTitle": "Sisteme fotovoltaice în Moldova – X&C Botnari",
+      "ogTitle": "Sisteme fotovoltaice în Moldova – Botnari Energy Group",
       "ogDescription": "On-Grid, Off-Grid și Hybrid: consultanță, proiectare și instalare sisteme fotovoltaice în Moldova."
     },
     "hero": {
@@ -444,16 +444,16 @@
   },
   "felicityPage": {
     "seo": {
-      "title": "Baterii Felicity LiFePO4 și invertoare hibride în Moldova | X&C Botnari",
+      "title": "Baterii Felicity LiFePO4 și invertoare hibride în Moldova | Botnari Energy Group",
       "description": "Import oficial Felicity în Moldova: baterii LiFePO4, invertoare hibride și soluții de stocare energie. Consultanță, configurare și montaj complet.",
-      "ogTitle": "Felicity în Moldova – baterii și invertoare | X&C Botnari",
+      "ogTitle": "Felicity în Moldova – baterii și invertoare | Botnari Energy Group",
       "ogDescription": "Baterii LiFePO4 Felicity și invertoare hibride, cu suport și garanție în Moldova."
     },
     "hero": {
       "badgeTitle": "Unicii importatori Felicity în Moldova",
-      "badgeSubtitle": "X&C Botnari SRL • import oficial • suport & garanție",
+      "badgeSubtitle": "Botnari Energy Group SRL • import oficial • suport & garanție",
       "title": "Tehnologia care stochează viitorul.",
-      "subtitle": "Baterii premium LiFePO4 și invertoare de înaltă performanță. X&C Botnari SRL – singura companie din Moldova cu acces direct la linia Felicity.",
+      "subtitle": "Baterii premium LiFePO4 și invertoare de înaltă performanță. Botnari Energy Group SRL – singura companie din Moldova cu acces direct la linia Felicity.",
       "ctaPrimary": "Consultă un specialist",
       "ctaSecondary": "Vezi produsele",
       "floatingBadge": {
@@ -522,6 +522,24 @@
         "features": ["LiFePO4", "Max capacity", "Enterprise ready", "Remote management"]
       }
     },
+    "highVoltage": {
+      "badge": "Baterii de înaltă tensiune • FLH",
+      "title": "Sisteme de stocare",
+      "titleHighlight": "High Voltage",
+      "description": "Sisteme Felicity LiFePO4 de înaltă tensiune, configurabile de la 20,48 la 61,44 kWh.",
+      "systemImageAlt": "Sistem Felicity FLH de înaltă tensiune, cu module de baterii și controler BMS în rack",
+      "systemTitle": "Un rack complet, pregătit pentru extindere",
+      "systemDescription": "Fiecare sistem include controlerul FLH48100UCG1, care gestionează rack-ul și protecțiile, plus 4–12 module FLH48100UMG1. Ecranul LCD tactil permite configurarea parametrilor sistemului.",
+      "controllerLabel": "Controler și BMS",
+      "moduleLabel": "Modul baterie",
+      "installationLabel": "Instalare",
+      "installationValue": "Rack de podea",
+      "moduleCountLabel": "Module baterie",
+      "moduleCountSuffix": "module",
+      "nominalVoltageLabel": "Tensiune sistem",
+      "requestQuote": "Solicită ofertă",
+      "officialSpecs": "Vezi specificațiile oficiale Felicity"
+    },
     "inverters": {
       "badge": "Invertoare Premium",
       "title": "Lucrăm cu cele mai",
@@ -547,9 +565,9 @@
   },
   "homePage": {
     "seo": {
-      "title": "Panouri fotovoltaice în Moldova | Instalare stații solare – X&C Botnari",
+      "title": "Panouri fotovoltaice în Moldova | Instalare stații solare – Botnari Energy Group",
       "description": "Instalare sisteme fotovoltaice On-Grid, Off-Grid și Hybrid în Moldova. Consultare, proiectare și montaj complet. Importator Felicity, garanție și suport premium.",
-      "ogTitle": "Panouri fotovoltaice în Moldova – X&C Botnari",
+      "ogTitle": "Panouri fotovoltaice în Moldova – Botnari Energy Group",
       "ogDescription": "Sisteme fotovoltaice On-Grid, Off-Grid și Hybrid. Consultare, proiectare și instalare în Moldova."
     },
     "schema": {
@@ -595,6 +613,17 @@
         "description": "Combinația perfectă între economii și independență energetică."
       }
     },
+    "highVoltage": {
+      "badge": "Baterii de înaltă tensiune • FLH",
+      "title": "Stocare de energie",
+      "titleHighlight": "High Voltage",
+      "description": "Sisteme Felicity LiFePO4, scalabile de la 20,48 la 61,44 kWh.",
+      "systemSummary": "Fiecare configurație folosește controlerul/BMS FLH48100UCG1 și module FLH48100UMG1 montate într-un rack de podea.",
+      "modulesLabel": "Module baterie",
+      "voltageLabel": "Tensiune sistem",
+      "controllerLabel": "Controler și BMS",
+      "cta": "Vezi gama HV Felicity"
+    },
     "stats": {
       "installedStations": "Stații instalate",
       "totalPower": "Putere totală montată",
@@ -606,7 +635,7 @@
       "badge": "De ce noi?",
       "title": "Nu instalăm doar panouri.",
       "titleHighlight": "Proiectăm și implementăm soluții complete.",
-      "description": "Cu peste 8 ani de experiență și sute de proiecte finalizate, X&C Botnari SRL este alegerea clară pentru cei care doresc calitate fără compromis.",
+      "description": "Cu peste 8 ani de experiență și sute de proiecte finalizate, Botnari Energy Group SRL este alegerea clară pentru cei care doresc calitate fără compromis.",
       "reasons": [
         "Lider de piață în Moldova",
         "Echipamente premium certificate",
@@ -631,9 +660,9 @@
   },
   "notFound": {
     "seo": {
-      "title": "Pagina nu a fost găsită (404) | X&C Botnari",
+      "title": "Pagina nu a fost găsită (404) | Botnari Energy Group",
       "description": "Pagina pe care o cauți nu există sau a fost mutată. Revino la pagina principală sau contactează-ne pentru ajutor.",
-      "ogTitle": "404 – X&C Botnari",
+      "ogTitle": "404 – Botnari Energy Group",
       "ogDescription": "Pagina solicitată nu a fost găsită."
     },
     "title": "Oops! Pagina nu a fost găsită",

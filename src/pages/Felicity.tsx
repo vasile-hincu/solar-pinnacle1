@@ -79,6 +79,27 @@ const Felicity = () => {
     };
   });
 
+  const highVoltageSystems = [
+    {
+      capacity: "20.48",
+      moduleCount: 4,
+      voltage: "204.8",
+      image: "/felicity-hv-20-48.png",
+    },
+    {
+      capacity: "40.96",
+      moduleCount: 8,
+      voltage: "409.6",
+      image: "/felicity-hv-40-96.png",
+    },
+    {
+      capacity: "61.44",
+      moduleCount: 12,
+      voltage: "614.4",
+      image: "/felicity-hv-61-44.png",
+    },
+  ];
+
   const inverters = [
     {
       key: "felicity",
@@ -132,7 +153,7 @@ const Felicity = () => {
         />
         <meta property="og:url" content={absoluteUrl("/felicity")} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+        <meta property="og:image" content={absoluteUrl("/favicon.png")} />
       </Helmet>
 
       {/* HERO */}
@@ -369,6 +390,134 @@ const Felicity = () => {
                   {t("felicityPage.batteries.requestQuote")}
                 </Link>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HIGH VOLTAGE BATTERIES */}
+      <section id="baterii-hv" className="py-32 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <SectionTitle
+            badge={t("felicityPage.highVoltage.badge")}
+            title={
+              <>
+                {t("felicityPage.highVoltage.title")} {" "}
+                <span className="text-gradient-accent">
+                  {t("felicityPage.highVoltage.titleHighlight")}
+                </span>
+              </>
+            }
+            description={t("felicityPage.highVoltage.description")}
+          />
+
+          <div className="grid lg:grid-cols-2 gap-10 items-center mb-14">
+            <div className="rounded-3xl bg-white p-4 shadow-xl ring-1 ring-border/60">
+              <img
+                src="/felicity-hv-61-44.png"
+                alt={t("felicityPage.highVoltage.systemImageAlt")}
+                className="h-[360px] w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <div className="premium-badge mb-5 inline-flex">
+                <Battery className="w-4 h-4" />
+                FLH48100UG1
+              </div>
+              <h3 className="font-display text-3xl md:text-4xl font-bold mb-4">
+                {t("felicityPage.highVoltage.systemTitle")}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                {t("felicityPage.highVoltage.systemDescription")}
+              </p>
+
+              <div className="grid sm:grid-cols-3 gap-5 border-y border-border py-6">
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">
+                    {t("felicityPage.highVoltage.controllerLabel")}
+                  </p>
+                  <p className="font-semibold">FLH48100UCG1</p>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">
+                    {t("felicityPage.highVoltage.moduleLabel")}
+                  </p>
+                  <p className="font-semibold">FLH48100UMG1</p>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">
+                    {t("felicityPage.highVoltage.installationLabel")}
+                  </p>
+                  <p className="font-semibold">
+                    {t("felicityPage.highVoltage.installationValue")}
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href="https://eu.felicitysolar.com/ro/produs/flh48100ug1/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-primary hover:underline"
+              >
+                {t("felicityPage.highVoltage.officialSpecs")}
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {highVoltageSystems.map((system, index) => (
+              <motion.article
+                key={system.capacity}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="glass-card overflow-hidden rounded-2xl"
+              >
+                <div className="h-64 bg-white p-3">
+                  <img
+                    src={system.image}
+                    alt={`${system.capacity} kWh Felicity FLH48100UG1`}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="font-display text-4xl font-bold">
+                      {system.capacity}
+                    </span>
+                    <span className="text-lg text-muted-foreground">kWh</span>
+                  </div>
+                  <h3 className="font-semibold mb-4">FLH48100UG1</h3>
+                  <div className="space-y-3 border-t border-border pt-4 mb-6 text-sm">
+                    <div className="flex justify-between gap-3">
+                      <span className="text-muted-foreground">
+                        {t("felicityPage.highVoltage.moduleCountLabel")}
+                      </span>
+                      <span className="font-medium text-right">
+                        {system.moduleCount} {t("felicityPage.highVoltage.moduleCountSuffix")}
+                      </span>
+                    </div>
+                    <div className="flex justify-between gap-3">
+                      <span className="text-muted-foreground">
+                        {t("felicityPage.highVoltage.nominalVoltageLabel")}
+                      </span>
+                      <span className="font-medium">{system.voltage} V</span>
+                    </div>
+                  </div>
+                  <Link
+                    to="/contact"
+                    className="bg-secondary text-foreground hover:bg-secondary/80 w-full py-3 rounded-xl font-semibold text-center transition-colors block"
+                  >
+                    {t("felicityPage.highVoltage.requestQuote")}
+                  </Link>
+                </div>
+              </motion.article>
             ))}
           </div>
         </div>

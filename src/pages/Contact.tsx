@@ -174,7 +174,7 @@ const Contact = () => {
         />
         <meta property="og:url" content={absoluteUrl("/contact")} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+        <meta property="og:image" content={absoluteUrl("/favicon.png")} />
       </Helmet>
 
       {/* HERO */}
@@ -542,7 +542,7 @@ const Contact = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="X&C Botnari Location"
+              title="Botnari Energy Group Location"
             />
           </motion.div>
         </div>

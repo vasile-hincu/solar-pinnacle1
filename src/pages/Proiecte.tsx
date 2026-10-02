@@ -174,7 +174,7 @@ const Proiecte = () => {
         />
         <meta property="og:url" content={absoluteUrl("/proiecte")} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+        <meta property="og:image" content={absoluteUrl("/favicon.png")} />
       </Helmet>
 
       {/* HERO */}

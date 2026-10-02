@@ -29,7 +29,7 @@ const NotFound = () => {
         />
         <meta property="og:url" content={absoluteUrl(location.pathname)} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={absoluteUrl("/og-image.png")} />
+        <meta property="og:image" content={absoluteUrl("/favicon.png")} />
       </Helmet>
 
       <div className="flex min-h-screen items-center justify-center bg-muted">
